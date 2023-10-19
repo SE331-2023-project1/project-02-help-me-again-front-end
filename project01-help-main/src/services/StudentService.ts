@@ -13,9 +13,9 @@ const apiClient: AxiosInstance = axios.create({
 
 export default {
     getStudent(): Promise<AxiosResponse<StudentDetail[]>> {
-      return apiClient.get<StudentDetail[]>('/student')
+      return apiClient.get<StudentDetail[]>('/students')
     },
     getStudentById(id : number) : Promise<AxiosResponse<StudentDetail>>{
-      return apiClient.get<StudentDetail>('student/'+ id.toString())
+      return apiClient.get<StudentDetail>('students/'+ id.toString())
     }
   }

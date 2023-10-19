@@ -21,6 +21,11 @@ const router = createRouter({
       component: StudentView
     },
     {
+      path: '/veevi',
+      name: 'veevi',
+      component: StudentView
+    },
+    {
       path: '/advisor',
       name: 'advisor',
       component: AdvisorView
@@ -60,17 +65,17 @@ const router = createRouter({
   ]
 });
 
-router.beforeEach(async () => {
-  NProgress.start()
-  const teacherStore = useTeacherStore()
-  const studentStore = useStudentStore()
-  if (teacherStore.teachers.length === 0) {
-    await teacherStore.fetchTeachersFromDB()
-  }
-  if (studentStore.students.length === 0) {
-    await studentStore.fetchStudentsFromDB()
-  }
-})
+// router.beforeEach(async () => {
+//   NProgress.start()
+//   const teacherStore = useTeacherStore()
+//   const studentStore = useStudentStore()
+//   if (teacherStore.teachers.length === 0) {
+//     await teacherStore.fetchTeachersFromDB()
+//   }
+//   if (studentStore.students.length === 0) {
+//     await studentStore.fetchStudentsFromDB()
+//   }
+// })
 
 // Start the progress bar on navigation
 router.beforeEach(() => {
