@@ -15,11 +15,13 @@ const props = defineProps({
     id: String
 })
 
-console.log(2222);
+
 
 
 StudentService.getStudentById(Number(props.id)).then((response) => {
     student.value = response.data
+    console.log(response.data);
+    
 }).catch(error => {
     console.log(error)
     if (error.response && error.response.status === 404) {
@@ -45,7 +47,7 @@ AdvisorService.getAdvisorById(Number(props.id)).then((response) => {
 <template>
     <div class="text-center">
       <div v-if="student">
-        <h1 class="text-2xl font-mono font-semibold mt-5 mb-5">{{ `${student.FirstName} ${student.LastName}` }}</h1>
+        <h1 class="text-2xl font-mono font-semibold mt-5 mb-5">{{ `${student.firstName} ${student.lastName}` }}</h1>
         <img class="mb-5 mx-auto w-20 h-20" :src="student.stu_pic" alt="img">
         <hr class="mb-5">
         <div id="nav">

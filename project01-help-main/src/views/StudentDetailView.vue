@@ -44,13 +44,13 @@ setTimeout(() => {
   <div class="text-center">
     <div v-if="student">
       <p>
-        <span class="font-mono font-semibold">First Name :</span> {{ student.FirstName }}
+        <span class="font-mono font-semibold">First Name :</span> {{ student.firstName }}
       </p>
       <p>
-        <span class="font-mono font-semibold">Last Name :</span> {{ student.LastName }}
+        <span class="font-mono font-semibold">Last Name :</span> {{ student.lastName }}
       </p>
       <p>
-        <span class="font-mono font-semibold">Student ID :</span> {{ student.Student_ID }}
+        <span class="font-mono font-semibold">Student ID :</span> {{ student.student_ID }}
       </p>
       <p>
         <span class="font-mono font-semibold mb-10">Registered on :</span> {{ student.registered }}

@@ -14,7 +14,7 @@
                   hover:bg-blue-50 
                   cursor-pointer
                   flex flex-col justify-center items-center" >
-          <span class="font-bold text-xl"> {{ `${(student.firstName).toUpperCase()} ${(student.lastName).toUpperCase()}` }}</span>
+          <span class="font-bold text-xl"> {{ `${(student.firstName)} ${(student.lastName)}` }}</span>
           <hr class="font-bold w-20 mt-4 border-blue-950">
           <img class="mt-5 w-20 h-20" :src = "student.stu_pic" alt="img">
       </div>
@@ -26,7 +26,6 @@
   import { ref, type PropType } from 'vue'
   import {type StudentDetail } from '@/type';
   
-  const StudentDetail= ref({})
   const props = defineProps({
     student:{
       type: Object as PropType<StudentDetail>,

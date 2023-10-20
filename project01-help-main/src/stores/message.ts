@@ -26,7 +26,7 @@ export const useMessageStore = defineStore("message", {
     updateflashcard(message: string) {
       this.flashMessage = message
   },
-  resetflashcard() {
+  resetMessage() {
       this.flashMessage= ''
   }
   },
