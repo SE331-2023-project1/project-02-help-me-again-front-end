@@ -238,7 +238,7 @@ const addStudent = () => {
 
   console.log(newStudent)
 
-  storeMessage.updateMessage('You are successfully for adding student.')
+  storeMessage.updateMessage(store.$id,'You are successfully for adding student.')
   setTimeout(() => {
     storeMessage.resetMessage()
   }, 4000)
@@ -278,7 +278,7 @@ const addTeacher = () => {
   
   fetchTeachers()
 
-  storeMessage.updateMessage('You are successfully for adding teacher.')
+  storeMessage.updateMessage(useTeacherStore.$id,"You are successfully for adding teacher.")
   setTimeout(() => {
     storeMessage.resetMessage()
   }, 4000)

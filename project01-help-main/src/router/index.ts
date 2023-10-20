@@ -7,7 +7,7 @@ import 'nprogress/nprogress.css'
 import StudentLayoutView from '../views/StudentLayoutView.vue'
 import StudentDetailView from '../views/StudentDetailView.vue'
 import StudentAdvisorView from '../views/StudentAdvisorView.vue'
-
+import StudentService from '@/services/StudentService'
 import { useTeacherStore } from '@/stores/teacher'
 import { useStudentStore } from '@/stores/student'
 
@@ -31,10 +31,33 @@ const router = createRouter({
       component: AdvisorView
     },
     {
-      path: '/student/:id',
-      name: 'student-layout',
+      path: "/students/:id",
+      name: "students-layout",
       component: StudentLayoutView,
       props: true,
+      beforeEnter: (to) => {
+        //add api
+        const id: number = parseInt(to.params.id as string);
+        const studentStore = useStudentStore();
+        return StudentService.getStudentById(id)
+          .then((response) => {
+            //set up data for the component
+            studentStore.setStudent(response.data);
+          })
+          .catch((error) => {
+            if (error.response && error.response.status === 404) {
+              return {
+                name: "404-resource",
+                params: { resource: "students" },
+              };
+            } else {
+              return {
+                name: "network-error",
+              };
+            }
+          });
+      },
+     
       children: [
         {
           path: '',
