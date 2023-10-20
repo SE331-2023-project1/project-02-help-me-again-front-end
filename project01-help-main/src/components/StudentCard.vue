@@ -1,4 +1,5 @@
 <template>
+  {{ student.id }}
   <RouterLink :to="{ name: 'student-detail', params: { id: student.id } }">
     <div v-if="student" class="StudentDetail-class">
       <div class="StudentDetail-class
@@ -13,7 +14,7 @@
                   hover:bg-blue-50 
                   cursor-pointer
                   flex flex-col justify-center items-center" >
-          <span class="font-bold text-xl"> {{ `${student.FirstName.toUpperCase()} ${student.LastName.toUpperCase()}` }}</span>
+          <span class="font-bold text-xl"> {{ `${(student.firstName).toUpperCase()} ${(student.lastName).toUpperCase()}` }}</span>
           <hr class="font-bold w-20 mt-4 border-blue-950">
           <img class="mt-5 w-20 h-20" :src = "student.stu_pic" alt="img">
       </div>

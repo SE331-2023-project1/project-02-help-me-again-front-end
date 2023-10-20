@@ -12,6 +12,9 @@ const props = defineProps({
   }
 })
 
+console.log(22222);
+
+
 const store = useMessageStore();
 const message = computed(() => store.getMessage(String(props.student?.id)));
 const detail = computed(() => store.getDetail(String(props.student?.id)));

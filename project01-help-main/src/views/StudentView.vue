@@ -9,9 +9,12 @@ const students: Ref<Array<StudentDetail>> = ref([])
 const itemsPerPage = 6; 
 const currentPage = ref(1);
 
+
+
 StudentService.getStudent()
   .then((response) => {
     students.value = response.data;
+    console.log("Hi")
   })
   .catch((error) => {
     console.error('Error fetching students:', error);
@@ -37,6 +40,7 @@ const displayedStudents = computed(() => {
 </script>
 
 <template>
+  
   <div class="student">
     <div class="grid gap-10 grid-cols-3 grid-row-3">
     <StudentCard  v-for="student in displayedStudents" :key="student.id" :student="student"></StudentCard></div>

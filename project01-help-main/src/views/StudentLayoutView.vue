@@ -15,6 +15,9 @@ const props = defineProps({
     id: String
 })
 
+console.log(2222);
+
+
 StudentService.getStudentById(Number(props.id)).then((response) => {
     student.value = response.data
 }).catch(error => {
