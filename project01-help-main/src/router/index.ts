@@ -10,6 +10,8 @@ import StudentAdvisorView from '../views/StudentAdvisorView.vue'
 import StudentService from '@/services/StudentService'
 import { useTeacherStore } from '@/stores/teacher'
 import { useStudentStore } from '@/stores/student'
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
 
 
 const router = createRouter({
@@ -29,6 +31,16 @@ const router = createRouter({
       path: '/advisor',
       name: 'advisor',
       component: AdvisorView
+    },
+    {
+      path: "/Login",
+      name: "Login",
+      component: Login,
+    },
+    {
+      path: "/Register",
+      name: "Register",
+      component: Register,
     },
     {
       path: "/students/:id",
