@@ -21,6 +21,12 @@ import { RouterLink, RouterView } from "vue-router"
     </div>
   </li>
 
+  <li class="m-2">
+    <div class="bg-white border-white rounded-lg py-2 px-4 text-blue-500 hover:text-blue-800 font-mono font-semibold ">
+      <RouterLink to="/Login">Login</RouterLink>
+    </div>
+  </li>
+
   <li class="mt-3 " >
     <div class="w-8 h-8">
       <RouterLink to="/addPerson"><img src="./assets/add-friend.png" alt="addButton"></RouterLink>
