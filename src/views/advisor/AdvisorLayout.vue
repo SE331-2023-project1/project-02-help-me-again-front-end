@@ -30,7 +30,7 @@ StudentService.getStudentsByAdvisor(props.id!).then((response) => {
 
 <template>
   <div v-if="students">
-    <div class="text-lg text-center text-black font-sans hover:font-serif flex flex-col p-4">
+    <div class="text-lg text-center text-black font-pri flex flex-col p-4">
     </div>
     <RouterView :advisor="advisors" :students="students"></RouterView>
   </div>

@@ -74,11 +74,11 @@ const addComment = () => {
           <img :src="student?.profileimage" alt="" class="crop rounded-lg" />
         </div>
         <div class="">
-          <span class="text-base text-gray-500 font-fig">ID: {{ student?.id }}</span> <br />
-          <span class="font-fig name font-bold text-black"> {{ student?.name }} {{ student?.surname }}</span>
+          <span class="text-base text-gray-500 font-pri">ID: {{ student?.id }}</span> <br />
+          <span class="font-pri name font-bold text-black"> {{ student?.name }} {{ student?.surname }}</span>
           <ul class="list-disc list-inside">
-            <span class="font-fig font-bold text-black text-xl course">Course List</span>
-            <li v-for="course in student?.courselist" :key="course" class="text-xl course font-fig text-black">
+            <span class="font-pri font-bold text-black text-xl course">Course List</span>
+            <li v-for="course in student?.courselist" :key="course" class="text-xl course font-pri text-black">
               {{ course }}
             </li>
           </ul>
@@ -88,12 +88,12 @@ const addComment = () => {
           <RouterLink :to="{ name: 'advisor-detail', params: { id: student.advisor.id } }">
             <button
               class=" bg-amber-300 hover:bg-amber-400 text-black shadow-md
-            font-bold py-2 px-5 rounded-xl font-fig hover:transform hover:scale-[1.05] transition-transform duration-300">
+            font-bold py-2 px-5 rounded-xl font-pri hover:transform hover:scale-[1.05] transition-transform duration-300">
               <div class="flex justify-center items-center">
                 <img :src="advisor?.profileimage" class="w-10 h-10 object-cover rounded-full mr-2">
                 <div class="flex flex-col">
-                  <span class="advisorid font-fig text-left">{{ advisor?.name }} {{ advisor?.surname }}</span>
-                  <span class="advisorid font-fig text-left">Advisor ID: {{ student.advisor.id }}</span>
+                  <span class="advisorid font-pri text-left">{{ advisor?.name }} {{ advisor?.surname }}</span>
+                  <span class="advisorid font-pri text-left">Advisor ID: {{ student.advisor.id }}</span>
                 </div>
               </div>
             </button>
@@ -109,12 +109,12 @@ const addComment = () => {
 
       <div class="items-center mx-2">
 
-        <span class="font-fig text-xs font-semibold text-gray-600 ">
+        <span class="font-pri text-xs font-semibold text-gray-600 ">
           Anonymous comment
         </span>
 
         <div class="bg-emerald-100 p-2 mb-2 rounded-lg mt-1 ">
-          <span class="text-black font-fig flex items-center">
+          <span class="text-black font-pri flex items-center">
             <img src="../../assets/comment.png" class="h-5 mx-2" alt="Comment Icon">
             example comment
           </span>
@@ -125,17 +125,17 @@ const addComment = () => {
         <div v-for="(commentItem, index) in keepCommt_id" :key="index">
 
 
-          <span class="font-fig text-xs font-semibold text-gray-600 ">Anonymous comment</span>
+          <span class="font-pri text-xs font-semibold text-gray-600 ">Anonymous comment</span>
           <div class="flex items-center bg-emerald-100 p-2 mb-2 rounded-lg mt-1 ">
             <img src="../../assets/comment.png" class="h-5 mx-2" alt="Comment Icon">
-            <span class="text-black font-fig">{{ commentItem.comment }}</span>
+            <span class="text-black font-pri">{{ commentItem.comment }}</span>
           </div>
         </div>
 
 
 
         <div class="my-3">
-          <div id="flashMessage" class="animate-pulse text-center text-base font-fig bg-green-500 font-fig text-white"
+          <div id="flashMessage" class="animate-pulse text-center text-base font-pri bg-green-500 font-pri text-white"
             v-if="message">
             <h4>{{ message }}</h4>
           </div>
@@ -143,7 +143,7 @@ const addComment = () => {
           <form @submit.prevent="addComment">
      
             <div class="mx-1 mb-1">
-              <label for="name" class="text-black font-bold font-fig">Comment:</label>
+              <label for="name" class="text-black font-bold font-pri">Comment:</label>
             </div>
 
       
@@ -156,7 +156,7 @@ const addComment = () => {
 
             <div class="flex justify-center mt-3">
               <button type="submit" class="submit-btn shadow-sm bg-emerald-300 hover:bg-emerald-400 hover:text-emerald-800
-               text-black py-1 px-2 rounded-xl font-fig font-semibold">Add Comment</button>
+               text-black py-1 px-2 rounded-xl font-pri font-semibold">Add Comment</button>
             </div>
           </form>
         </div>

@@ -2,12 +2,12 @@
   <div class="flex flex-col p-3 w-3/4 h-4/5 border border-gray-700
         rounded-lg mb-4 bg-white shadow-md my-5 mx-auto">
 
-    <div class="font-fig mx-5 text-black">
-      <h1 class="flex justify-center font-bold text-2xl mb-3 text-green-600">Add Person</h1>
+    <div class="font-pri mx-5 text-black">
+      <h1 class="flex justify-center font-pri text-2xl mb-3 text-gray-600">Add Person</h1>
       <div class="flex mb-3">
         <label class="my-auto" for="personType">Select Person Type:</label>
         <select v-model="selectedPersonType" id="personType"
-          class="ml-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5">
+          class="ml-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5">
           <option value="student">Student</option>
           <option value="advisor">Advisor</option>
         </select>
@@ -22,7 +22,7 @@
             <div class="flex mb-3">
               <label for="studentName" class="my-auto mr-2">Name:</label>
               <input
-                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
+                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentName" type="text" id="studentName" required pattern="[A-Za-z]+"
                 title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
@@ -30,7 +30,7 @@
             <div class="flex mb-3">
               <label for="studentSurname" class="my-auto mx-2">Surname:</label>
               <input
-                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
+                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentSurname" type="text" id="studentSurname" required pattern="[A-Za-z]+"
                 title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
@@ -40,7 +40,7 @@
           <div class="mb-3">
             <label for="studentProfileImage" class="mr-2">Profile Image URL:</label>
             <input
-              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
+              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
               v-model="studentProfileImage" type="text" id="studentProfileImage" required pattern="https?://.+"
               placeholder="Add link of your picture ('http://..' or 'https://..)"
               title="Must start with 'http://' or 'https://'">
@@ -50,9 +50,9 @@
 
           <div class="flex mb-3">
 
-            <label for="studentCourseList" class="my-auto mr-2">Course List:</label>
+            <label for="studentCourseList" class="my-auto mx-auto">Course List:</label>
             <select
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
+              class="bg-gray-50 mx-auto border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
               v-model="studentCourseList" id="studentCourseList" required>
               <option value disabled>Select Course</option>
 
@@ -78,13 +78,11 @@
 
 
             </select>
-          </div>
 
 
-          <div class="flex mb-3">
-            <label for="studentAdvisor" class="my-auto mr-2">Advisor:</label>
+            <label for="studentAdvisor" class="my-auto mx-auto">Advisor:</label>
             <select
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
+              class="bg-gray-50 mx-auto border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
               v-model="studentAdvisor" id="studentAdvisor">
               <option value="" disabled>Select a Advisor</option>
               <option value="T123">David Smith</option>
@@ -99,6 +97,11 @@
               <option value="T012">Daniel Taylor</option>
 
             </select>
+          </div>
+
+
+          <div class="flex mb-3">
+           
 
           </div>
 
@@ -106,13 +109,13 @@
 
 
           <div id="flashMessage"
-            class="mb-2 animate-pulse text-center text-base font-fig bg-green-500 font-fig text-white" v-if="message">
+            class="mb-2 animate-pulse text-center text-base font-pri bg-gray-500 font-pri text-white" v-if="message">
             <h4>{{ message }}</h4>
           </div>
           <FlashMessage />
           <div class="flex justify-center mb-2">
-            <button class="bg-green-500 hover:bg-green-700 shadow-md px-2 py-1
-            rounded-lg font-bold text-white" type="submit">Add Student</button>
+            <button class="bg-gray-500 hover:bg-gray-700 shadow-md px-2 py-1
+            rounded-lg font-pri text-white" type="submit">Add Student</button>
           </div>
         </form>
       </div>
@@ -124,7 +127,7 @@
             <div class="flex mb-3">
               <label for="advisorName" class="mr-2 my-auto">Name:</label>
               <input
-                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
+                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="AdvisorName" type="text" id="advisorName" required pattern="[A-Za-z]+"
                 title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
@@ -132,7 +135,7 @@
             <div class="flex mb-3">
               <label for="advisorSurname" class="mr-2 my-auto">Surname:</label>
               <input
-                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
+                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="AdvisorSurname" type="text" id="advisorSurname" required pattern="[A-Za-z]+"
                 title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
@@ -142,18 +145,18 @@
           <div class="mb-3">
             <label for="advisorProfileImage" class="mr-2">Profile Image URL:</label>
             <input placeholder="Add link of your picture ('http://..' or 'https://..)"
-              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
+              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
               v-model="advisorProfileImage" type="text" id="advisorProfileImage" required pattern="https?://.+"
               title="Must start with 'http://' or 'https://'">
           </div>
 
           <div id="flashMessage"
-            class="mb-2 animate-pulse text-center text-base font-fig bg-green-500 font-fig text-white" v-if="message">
+            class="mb-2 animate-pulse text-center text-base font-pri bg-gray-500 font-pri text-white" v-if="message">
             <h4>{{ message }}</h4>
           </div>
           <FlashMessage />
           <div class="flex justify-center mb-2">
-            <button class="bg-green-500 hover:bg-green-700 shadow-md px-2 py-1
+            <button class="bg-gray-500 hover:bg-gray-700 shadow-md px-2 py-1
             rounded-lg font-bold text-white" type="submit">Add Advisor</button>
           </div>
         </form>

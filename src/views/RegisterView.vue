@@ -32,7 +32,7 @@ const validationSchema = yup.object({
 
   password: yup.string()
     .required('The password is required')
-    .min(6, 'Password must be at least 6 characters long.'),
+    .min(5, 'Password must be at least 5 characters long.'),
 })
 
 const { errors, handleSubmit } = useForm({
@@ -79,7 +79,7 @@ const onSubmit = handleSubmit((values) => {
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <img class="mx-auto h-[350px] w-auto animate-fade-down rounded " src="../assets/help.png" alt="" />
 
-      <h2 class="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700">
+      <h2 class="mt-3 text-center text-2xl font-pri leading-9 tracking-tight text-gray-700">
         Sign Up
       </h2>
     </div>
@@ -87,16 +87,16 @@ const onSubmit = handleSubmit((values) => {
     <div class="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" @submit.prevent="onSubmit">
         <div>
-          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
-          <InputText type="text" v-model="username" class="text-emerald-600 text-sm font-semibold" placeholder="Username">
+          <label for="username" class="block text-sm font-pri leading-6 text-gray-900">Username</label>
+          <InputText type="text" v-model="username" class="text-emerald-600 text-sm font-pri" placeholder="Username">
           </InputText>
           <div v-if="errors['username']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
             {{ errors['username'] }}</div>
         </div>
 
         <div>
-          <label for="firstName" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
-          <InputText type="text" v-model="firstName" class="text-emerald-600 text-sm font-semibold"
+          <label for="firstName" class="block text-sm font-pri leading-6 text-gray-900">First Name</label>
+          <InputText type="text" v-model="firstName" class="text-emerald-600 text-sm font-pri"
             placeholder="Enter your first name"></InputText>
           <div v-if="errors['firstName']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
             {{ errors['firstName'] }}</div>
@@ -104,8 +104,8 @@ const onSubmit = handleSubmit((values) => {
         </div>
 
         <div>
-          <label for="lastName" class="block text-sm font-medium leading-6 text-gray-900">Last Name</label>
-          <InputText type="text" v-model="lastName" class="text-emerald-600 text-sm font-semibold"
+          <label for="lastName" class="block text-sm font-pri leading-6 text-gray-900">Last Name</label>
+          <InputText type="text" v-model="lastName" class="text-emerald-600 text-sm font-pri"
             placeholder="Enter your last name"></InputText>
           <div v-if="errors['lastName']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
             {{ errors['lastName'] }}</div>
@@ -113,8 +113,8 @@ const onSubmit = handleSubmit((values) => {
         </div>
 
         <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email Address</label>
-          <InputText type="text" v-model="email" class="text-emerald-600 text-sm font-semibold"
+          <label for="email" class="block text-sm font-pri leading-6 text-gray-900">Email Address</label>
+          <InputText type="text" v-model="email" class="text-emerald-600 text-sm font-pri"
             placeholder="Enter your email address"></InputText>
           <div v-if="errors['email']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌ {{
             errors['email'] }}</div>
@@ -123,22 +123,22 @@ const onSubmit = handleSubmit((values) => {
 
         <div>
           <div class="flex items-center justify-start">
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+            <label for="password" class="block text-sm font-pri leading-6 text-gray-900">Password</label>
           </div>
 
-          <InputText v-model="password" type="password" class="text-emerald-600 text-sm font-semibold"
-            placeholder="Create password"></InputText>
+          <InputText v-model="password" type="password" class="text-emerald-600 text-sm font-pri"
+            placeholder="password must be at least 5 character belong"></InputText>
           <div v-if="errors['password']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
             {{ errors['password'] }}</div>
         </div>
 
         <div>
-          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-fig bg-red-500 font-fig text-white"
+          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-pri bg-red-500 font-pri text-white"
             v-if="message">
             <h4>{{ message }}</h4>
           </div>
           <button type="submit"
-            class="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm
+            class="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-pri leading-6 text-white shadow-sm
                     hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
             Sign Up
           </button>
@@ -147,12 +147,12 @@ const onSubmit = handleSubmit((values) => {
 
       </form>
 
-      <p class="mt-10 text-center text-sm text-gray-500">
+      <p class="mt-10 text-center font-pri text-sm text-gray-500">
         Already have an account?
 
         {{ ' ' }}
 
-        <RouterLink :to="{ name: 'Login' }" class="font-semibold leading-6 text-gray-600 hover:text-gray-400">Sign in
+        <RouterLink :to="{ name: 'Login' }" class="font-pri leading-6 text-gray-600 hover:text-gray-400">Sign in
         </RouterLink>
       </p>
     </div>
