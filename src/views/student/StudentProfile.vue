@@ -21,7 +21,7 @@
                             first name</label>
                         <input type="text" id="first_name"
                             class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
-                            placeholder="Your first name" value="Jane" required>
+                            placeholder="Your first name" value="nong baibua" required>
                     </div>
                 </div>
             </div>

@@ -76,7 +76,7 @@ export default {
                 <p class="font-pri text-md text-gray-600">This mount we have big event for our student please prepare yourself</p>
             </div>
             <!-- Photo slider -->
-            <!-- <div class="mt-5  relative">
+            <div class="mt-5  relative">
                 <img :src="photos[selectedPhoto]" class="object-cover w-full h-60 md:h-96 rounded-lg"
                     alt="Selected Photo" />
                 <div
@@ -105,7 +105,7 @@ export default {
                         <span class="sr-only">Next</span>
                     </span>
                 </div>
-            </div> -->
+            </div>
         </div>
 
     </main>
