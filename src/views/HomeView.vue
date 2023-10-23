@@ -4,11 +4,12 @@
 
 <template>
   <main class="flex flex-col items-center justify-center  text-black">
-    <h1 class="font-fig text-3xl font-bold  px-4 py-2 text-center">SE331 TERM PROJECT</h1>
-    <p class="font-mono text-center">Component-Based Software Development</p>
+    <!-- <h1 class="font-fig text-3xl font-bold py-4 text-center">Component-Based Software Development</h1> -->
+    <a href="/" class="flex items-center"><img src="../assets/help.png" alt="" class="animate-fade-down rounded " /></a>
+    
     <br>
-    <p class="font-fig font-bold text-base ">Group Name: Help Me PLEASE</p>
-    <h2 class="font-fig my-2 font-bold">Team Members</h2>
+    <!-- <p class="font-fig font-bold text-base ">Group Name: Help Me PLEASE</p> -->
+    <h2 class="font-fig font-bold">Team Members</h2>
     <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-24 gap-y-12 mt-10">
       <div class="member flex flex-col items-center justify-center">
         <!-- pic -->

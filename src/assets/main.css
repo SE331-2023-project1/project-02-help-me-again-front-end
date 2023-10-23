@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400&display=swap');
 
 body {
-  background: linear-gradient(135deg, rgb(243, 198, 255) , rgb(189, 242, 255) , rgb(253, 255, 206));
+  background: linear-gradient(135deg,#ffa9f9, #fff7ad  );
 }
 
 .font-dm {

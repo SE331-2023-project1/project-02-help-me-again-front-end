@@ -31,7 +31,7 @@ if (token && userRole && id) {
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="/" class="flex items-center">
         <!-- <img src="../assets/logo.png" class="h-14 mr-3" alt="Logo" /> -->
-        <img src="../assets/bodymomb.png" class="h-[40px]">
+        <img src="../assets/navlogo2.png" class="h-[40px]">
         <!-- <span class="font-cp self-center text-2xl font-semibold whitespace-nowrap text-violet-700">BodyMom</span> -->
       </a>
       <button data-collapse-toggle="navbar-default" type="button"
