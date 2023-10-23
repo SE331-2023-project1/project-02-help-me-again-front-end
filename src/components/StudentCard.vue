@@ -6,7 +6,7 @@
 
           <div class="ml-4">
               <span class="text-black" text-lg> {{ student?.name }} {{ student?.surname }}</span>
-          <ul class="mt-2">
+              <ul class="mt-2 list-disc list-inside">
               <li v-for="course in student?.courselist" :key="course" class="text-gray-700">{{ course }}</li>
           </ul>
           </div>
