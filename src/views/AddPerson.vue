@@ -4,14 +4,15 @@
 
     <div class="font-pri mx-5 text-black">
       <h1 class="flex justify-center font-pri text-2xl mb-3 text-gray-600">Add Person</h1>
-      <div class="flex mb-3">
-        <label class="my-auto" for="personType">Select Person Type:</label>
-        <select v-model="selectedPersonType" id="personType"
-          class="ml-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5">
-          <option value="student">Student</option>
-          <option value="advisor">Advisor</option>
-        </select>
-      </div>
+      <div class="flex mb-3 justify-center items-center">
+  <label class="my-auto" for="personType">Select Person Type:</label>
+  <select v-model="selectedPersonType" id="personType"
+    class="ml-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5">
+    <option value="student">Student</option>
+    <option value="advisor">Advisor</option>
+  </select>
+</div>
+
 
 
       <div v-if="selectedPersonType === 'student'">
@@ -20,7 +21,7 @@
         <form @submit.prevent="addStudent">
           <div class="grid grid-cols-2 gap-4">
             <div class="flex mb-3">
-              <label for="studentName" class="my-auto mr-2">Name:</label>
+              <label for="studentName" class="my-auto mx-auto">Name:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentName" type="text" id="studentName" required pattern="[A-Za-z]+"
@@ -28,7 +29,7 @@
             </div>
 
             <div class="flex mb-3">
-              <label for="studentSurname" class="my-auto mx-2">Surname:</label>
+              <label for="studentSurname" class="my-auto mx-auto">Surname:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentSurname" type="text" id="studentSurname" required pattern="[A-Za-z]+"
@@ -47,63 +48,66 @@
           </div>
 
 
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex mb-3 mx-auto">
 
-          <div class="flex mb-3">
+<label for="studentCourseList" class="my-auto ">Course List:</label>
+<select
+  class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+  v-model="studentCourseList" id="studentCourseList" required>
+  <option value disabled>Select Course</option>
 
-            <label for="studentCourseList" class="my-auto mx-auto">Course List:</label>
-            <select
-              class="bg-gray-50 mx-auto border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="studentCourseList" id="studentCourseList" required>
-              <option value disabled>Select Course</option>
-
-              <option value="Math">Math</option>
-              <option value="Science">Science</option>
-              <option value="English">English</option>
-              <option value="History">History</option>
-              <option value="Physics">Physics</option>
-              <option value="ComSci">ComSci</option>
-              <option value="Art">Art</option>
-              <option value="Music">Music</option>
-              <option value="Biology">Biology</option>
-              <option value="Chemistry">Chemistry</option>
-              <option value="Spanish">Spanish</option>
-              <option value="Literature">Literature</option>
-              <option value="PolSci">PolSci</option>
-              <option value="Philosophy">Philosophy</option>
-              <option value="Sports">Sports</option>
-              <option value="PE">PE</option>
-              <option value="Drama">Drama</option>
-              <option value="Astronomy">Astronomy</option>
-              <option value="Languages">Languages</option>
-
-
-            </select>
+  <option value="Math">Math</option>
+  <option value="Science">Science</option>
+  <option value="English">English</option>
+  <option value="History">History</option>
+  <option value="Physics">Physics</option>
+  <option value="ComSci">ComSci</option>
+  <option value="Art">Art</option>
+  <option value="Music">Music</option>
+  <option value="Biology">Biology</option>
+  <option value="Chemistry">Chemistry</option>
+  <option value="Spanish">Spanish</option>
+  <option value="Literature">Literature</option>
+  <option value="PolSci">PolSci</option>
+  <option value="Philosophy">Philosophy</option>
+  <option value="Sports">Sports</option>
+  <option value="PE">PE</option>
+  <option value="Drama">Drama</option>
+  <option value="Astronomy">Astronomy</option>
+  <option value="Languages">Languages</option>
 
 
-            <label for="studentAdvisor" class="my-auto mx-auto">Advisor:</label>
-            <select
-              class="bg-gray-50 mx-auto border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="studentAdvisor" id="studentAdvisor">
-              <option value="" disabled>Select a Advisor</option>
-              <option value="T123">David Smith</option>
-              <option value="T234">Alice Johnson</option>
-              <option value="T345">Emily Williams</option>
-              <option value="T456">Rose Brown</option>
-              <option value="T567">Sarah Miller</option>
-              <option value="T678">John Davis</option>
-              <option value="T789">Olivia Wilson</option>
-              <option value="T890">William Anderson</option>
-              <option value="T901">Sophia Martinez</option>
-              <option value="T012">Daniel Taylor</option>
-
-            </select>
-          </div>
+</select>
 
 
-          <div class="flex mb-3">
-           
 
-          </div>
+</div>
+
+
+<div class="flex mb-3 mx-auto">
+<label for="studentAdvisor" class="my-auto ">Advisor:</label>
+<select
+  class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+  v-model="studentAdvisor" id="studentAdvisor">
+  <option value="" disabled>Select a Advisor</option>
+  <option value="T123">David Smith</option>
+  <option value="T234">Alice Johnson</option>
+  <option value="T345">Emily Williams</option>
+  <option value="T456">Rose Brown</option>
+  <option value="T567">Sarah Miller</option>
+  <option value="T678">John Davis</option>
+  <option value="T789">Olivia Wilson</option>
+  <option value="T890">William Anderson</option>
+  <option value="T901">Sophia Martinez</option>
+  <option value="T012">Daniel Taylor</option>
+
+</select>
+
+</div>
+            </div>
+
+         
 
 
 
