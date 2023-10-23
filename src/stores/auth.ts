@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import type { AxiosInstance } from 'axios'
 // import type { EventOrganizer } from '@/type'
-import type { StudentItem, TeacherItem } from '@/type'
+import type { StudentItem, AdvisorItem } from '@/type'
 
 const apiClient: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,

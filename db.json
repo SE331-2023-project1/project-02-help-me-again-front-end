@@ -6,7 +6,7 @@
         "id": "123456",
         "profileimage": "https://rebrand.ly/xz81uz9",
         "courselist": ["Math", "Science"],
-        "teacherID": "T123",
+        "advisorID": "T123",
         "comment": []
       },
       {
@@ -15,7 +15,7 @@
         "id": "789012",
         "profileimage": "https://rb.gy/1jp8m",
         "courselist": ["History", "English"],
-        "teacherID": "T234",
+        "advisorID": "T234",
         "comment": []
       },
       {
@@ -24,7 +24,7 @@
         "id": "345678",
         "profileimage": "https://tinyurl.com/zu943zf6",
         "courselist": ["Physics", "ComSci"],
-        "teacherID": "T789",
+        "advisorID": "T789",
         "comment": []
       },
       {
@@ -33,7 +33,7 @@
         "id": "456789",
         "profileimage": "https://rb.gy/44kto",
         "courselist": ["Art", "Music"],
-        "teacherID": "T345",
+        "advisorID": "T345",
         "comment": []
       },
       {
@@ -42,7 +42,7 @@
         "id": "567890",
         "profileimage": "https://rebrand.ly/ul1z0wk",
         "courselist": ["Biology", "Chemistry"],
-        "teacherID": "T901",
+        "advisorID": "T901",
         "comment": []
       },
       {
@@ -51,7 +51,7 @@
         "id": "678901",
         "profileimage": "https://rb.gy/p5upi",
         "courselist": ["Spanish", "History"],
-        "teacherID": "T234",
+        "advisorID": "T234",
         "comment": []
       },
       {
@@ -60,7 +60,7 @@
         "id": "789012",
         "profileimage": "https://shorturl.at/aEU38",
         "courselist": ["Math", "Physics"],
-        "teacherID": "T123",
+        "advisorID": "T123",
         "comment": []
       },
       {
@@ -69,7 +69,7 @@
         "id": "890123",
         "profileimage": "https://rb.gy/v5fjc",
         "courselist": ["English", "Literature"],
-        "teacherID": "T234",
+        "advisorID": "T234",
         "comment": []
       },
       {
@@ -78,7 +78,7 @@
         "id": "901234",
         "profileimage": "https://rebrand.ly/35uqc75",
         "courselist": ["History", "PolSci"],
-        "teacherID": "T345",
+        "advisorID": "T345",
         "comment": []
       },
       {
@@ -87,7 +87,7 @@
         "id": "123450",
         "profileimage": "https://rb.gy/pbyzw",
         "courselist": ["Biology", "Chemistry"],
-        "teacherID": "T567",
+        "advisorID": "T567",
         "comment": []
       },
       {
@@ -96,7 +96,7 @@
         "id": "234561",
         "profileimage": "https://rebrand.ly/l27gc2a",
         "courselist": ["History", "Philosophy"],
-        "teacherID": "T678",
+        "advisorID": "T678",
         "comment": []
       },
       {
@@ -105,7 +105,7 @@
         "id": "345612",
         "profileimage": "https://tinyurl.com/yftuesm4",
         "courselist": ["Math", "ComSci"],
-        "teacherID": "T123",
+        "advisorID": "T123",
         "comment": []
       },
       {
@@ -114,7 +114,7 @@
         "id": "456123",
         "profileimage": "https://rebrand.ly/d3776b",
         "courselist": ["Sports", "PE"],
-        "teacherID": "T890",
+        "advisorID": "T890",
         "comment": []
       },
       {
@@ -123,7 +123,7 @@
         "id": "567234",
         "profileimage": "https://rebrand.ly/mqqbv3v",
         "courselist": ["Art", "Drama"],
-        "teacherID": "T456",
+        "advisorID": "T456",
         "comment": []
       },
       {
@@ -132,7 +132,7 @@
         "id": "678345",
         "profileimage": "https://rebrand.ly/dy9uhoc",
         "courselist": ["Science", "Astronomy"],
-        "teacherID": "T567",
+        "advisorID": "T567",
         "comment": []
       },
       {
@@ -141,7 +141,7 @@
         "id": "789456",
         "profileimage": "https://rebrand.ly/nvnjnhm",
         "courselist": ["English", "Literature"],
-        "teacherID": "T234",
+        "advisorID": "T234",
         "comment": []
       },
       {
@@ -150,7 +150,7 @@
         "id": "890567",
         "profileimage": "https://shorturl.at/nyLT7",
         "courselist": ["History", "PolSci"],
-        "teacherID": "T012",
+        "advisorID": "T012",
         "comment": []
       },
       {
@@ -159,7 +159,7 @@
         "id": "901678",
         "profileimage": "https://rebrand.ly/29e9h93",
         "courselist": ["Biology", "Chemistry"],
-        "teacherID": "T456",
+        "advisorID": "T456",
         "comment": []
       },
       {
@@ -168,7 +168,7 @@
         "id": "123789",
         "profileimage": "https://shorturl.at/mryF2",
         "courselist": ["Math", "Physics"],
-        "teacherID": "T567",
+        "advisorID": "T567",
         "comment": []
       },
       {
@@ -177,7 +177,7 @@
         "id": "234890",
         "profileimage": "https://rebrand.ly/amihee8",
         "courselist": ["Languages", "Literature"],
-        "teacherID": "T456",
+        "advisorID": "T456",
         "comment": []
       },
       {
@@ -186,11 +186,11 @@
         "id": "345901",
         "profileimage": "https://shorturl.at/tyzB9",
         "courselist": ["Music", "History"],
-        "teacherID": "T345",
+        "advisorID": "T345",
         "comment": []
       }
     ],
-    "teachers": [
+    "advisors": [
       {
         "id": "T123",
         "studentsId": ["123456"],

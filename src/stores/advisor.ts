@@ -1,33 +1,33 @@
-import TeacherService from "@/services/TeacherService";
-import type { TeacherItem } from "@/type";
+import AdvisorService from "@/services/AdvisorService";
+import type { AdvisorItem } from "@/type";
 import axios from "axios";
 import { defineStore } from "pinia";
 
-export const useTeacherStore = defineStore('teacher', {
+export const useAdvisorStore = defineStore('advisor', {
     state: () => ({
-        teachers: [] as TeacherItem []
+        advisors: [] as AdvisorItem []
     }),
     getters: {
-        getTeachers: (state) => state.teachers,
-        getTeacherByPage: (state) => (perPage: number, page: number) => {
+        getAdvisors: (state) => state.advisors,
+        getAdvisorByPage: (state) => (perPage: number, page: number) => {
             const startIndex = (page - 1) * perPage;
             const endIndex = startIndex + perPage;
-            return state.teachers.slice(startIndex, endIndex);
+            return state.advisors.slice(startIndex, endIndex);
         },
-        getTeacherById: (state) => async (id: string) => {
-            const response = state.teachers.find(teacher => teacher.id == id)
+        getAdvisorById: (state) => async (id: string) => {
+            const response = state.advisors.find(advisor => advisor.id == id)
             // console.log(response)
-            return new Promise<TeacherItem | null>((resolve) => {
+            return new Promise<AdvisorItem | null>((resolve) => {
                 resolve(response || null)
             })
         }
-        // getTeacherById: (state) => (id: string) => {
-        //     return new Promise<TeacherItem | undefined>((resolve, reject) => {
-        //         const teacher = state.teachers.find(teacher => teacher.teacherId === id);
-        //         if (teacher) {
-        //             resolve(teacher);
+        // getAdvisorById: (state) => (id: string) => {
+        //     return new Promise<AdvisorItem | undefined>((resolve, reject) => {
+        //         const advisor = state.advisors.find(advisor => advisor.advisorId === id);
+        //         if (advisor) {
+        //             resolve(advisor);
         //         } else {
-        //             const error = new Error('Teacher not found');
+        //             const error = new Error('Advisor not found');
         //             // Custom status for the error
         //             (error as any).status = 404;
         //             reject(error);
@@ -36,23 +36,23 @@ export const useTeacherStore = defineStore('teacher', {
         // },
     },
     actions: {
-        setTeacher(teachers: TeacherItem[]) {
-            this.teachers = teachers
+        setAdvisor(advisors: AdvisorItem[]) {
+            this.advisors = advisors
         },
-        fetchTeachers() {
-            // const response = this.getTeachers
+        fetchAdvisors() {
+            // const response = this.getAdvisors
             try {
-                return this.teachers
+                return this.advisors
             } catch (error) {
                 console.log(error)
                 return null
             }
 
-            // this.setTeacher(response)
+            // this.setAdvisor(response)
             
         },
-        async fetchTeachersFromDB() {
-            const response = await TeacherService.getAllTeachers()
+        async fetchAdvisorsFromDB() {
+            const response = await AdvisorService.getAllAdvisors()
             // try {
             //     return response.data
             // } catch (error) {
@@ -60,48 +60,48 @@ export const useTeacherStore = defineStore('teacher', {
             //     return null
             // }
 
-            this.setTeacher(response.data)
+            this.setAdvisor(response.data)
             
         },
-        async fetchTeacherById(id: string) {
+        async fetchAdvisorById(id: string) {
             try {
-                const response = this.getTeacherById(id)
+                const response = this.getAdvisorById(id)
                 return response
             } catch (error) {
                 console.log(error)
                 return null
             }
         },
-        async fetchTeacherByPage(perPage: number, page: number) {
+        async fetchAdvisorrByPage(perPage: number, page: number) {
             try {
-                const response = this.getTeacherByPage(perPage, page)
+                const response = this.getAdvisorByPage(perPage, page)
                 return response
             } catch (error) {
                 console.log(error)
                 return null
             }
         },
-        // ส่วนของ useTeacherStore
-        async addTeacher(teacher: TeacherItem) {
+        // ส่วนของ useAdvisorStore
+        async addAdvisor(advisor: AdvisorItem) {
             try {
               // สร้างข้อมูล requestData
               const requestData = {
-                id: teacher.id,
-                studentsId: teacher.studentsId,
-                name: teacher.name,
-                surname: teacher.surname,
-                profileimage: teacher.profileimage,
+                id: advisor.id,
+                studentsId: advisor.studentsId,
+                name: advisor.name,
+                surname: advisor.surname,
+                profileimage: advisor.profileimage,
               };
           
               // ส่ง POST request ไปยัง URL ของ API สำหรับการเพิ่มครู
-              const response = await axios.post(import.meta.env.VITE_BASE_URL_TEACHER, requestData);
+              const response = await axios.post(import.meta.env.VITE_BASE_URL_ADVISOR, requestData);
 
 
           
               if (response.status === 201) {
                 // การเพิ่มครูสำเร็จ
-                this.teachers.push(teacher)
-                // console.log(this.getTeachers)
+                this.advisors.push(advisor)
+                // console.log(this.getAdvisors)
               } else {
                 // การเพิ่มครูไม่สำเร็จ
                 console.error('การเพิ่มครูไม่สำเร็จ');

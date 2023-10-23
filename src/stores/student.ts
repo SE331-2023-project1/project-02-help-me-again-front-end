@@ -2,7 +2,7 @@ import StudentService from "@/services/StudentService";
 import type { StudentItem } from "@/type";
 import axios from "axios";
 import { defineStore } from "pinia";
-import { useTeacherStore } from "./teacher";
+import { useAdvisorStore } from "./advisor";
 
 
 export const useStudentStore = defineStore('student', {
@@ -27,17 +27,17 @@ export const useStudentStore = defineStore('student', {
             // console.log(state.students)
             // return Promise.resolve(response)
         },
-        getStudentsByTeacherId: (state) => async (teacherId: string) => {
-            const teacherStore = useTeacherStore();
-            const teacher = teacherStore.getTeacherById(teacherId);
+        getStudentsByAdvisorId: (state) => async (advisorId: string) => {
+            const advisorStore = useAdvisorStore();
+            const advisor = advisorStore.getAdvisorById(advisorId);
 
-            if (!teacher) {
+            if (!advisor) {
                 return Promise.resolve([]); 
             }
 
-            // const students = state.students.filter(student => student.teacher.id == teacherId);
+            // const students = state.students.filter(student => student.advisor.id == advisorId);
             const students = state.students.filter(student => {
-                return Array.isArray(student.teacher) && student.teacher.includes(teacherId);
+                return Array.isArray(student.advisor) && student.advisor.includes(advisorId);
             });
             return Promise.resolve(students);
         },
@@ -69,8 +69,8 @@ export const useStudentStore = defineStore('student', {
                 return null
             }
         },
-        async fetchStudentsByTeacher(id: string) {
-            const response = await StudentService.getStudentsByTeacher(id)
+        async fetchStudentsByAdvisor(id: string) {
+            const response = await StudentService.getStudentsByAdvisor(id)
             this.setStudent(response.data)
             // console.log(response)
 
@@ -84,7 +84,7 @@ export const useStudentStore = defineStore('student', {
                 id: student.id,
                 profileimage: student.profileimage,
                 courselist: student.courselist,
-                teacherID: student.teacherID,
+                advisorID: student.advisorID,
                 comment: student.comment,
               };
           
