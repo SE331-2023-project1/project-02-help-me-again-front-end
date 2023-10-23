@@ -75,86 +75,58 @@ const onSubmit = handleSubmit((values) => {
 </script>
 
 <template>
-  <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-[350px] w-auto animate-fade-down rounded " src="../assets/help.png" alt="" />
-
-      <h2 class="mt-3 text-center text-2xl font-pri leading-9 tracking-tight text-gray-700">
-        Sign Up
-      </h2>
-    </div>
-
-    <div class="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" @submit.prevent="onSubmit">
+  <div class="flex min-h-screen justify-center items-center">
+    <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
+      <img class="mx-auto h-[120px] w-auto animate-fade-down rounded" src="../assets/navlogo.png" alt="Your Company">
+      <h2 class="text-2xl font-pri text-gray-700 text-center">Sign Up</h2>
+      <form class="mt-6 space-y-4" @submit.prevent="onSubmit">
         <div>
-          <label for="username" class="block text-sm font-pri leading-6 text-gray-900">Username</label>
-          <InputText type="text" v-model="username" class="text-emerald-600 text-sm font-pri" placeholder="Username">
-          </InputText>
-          <div v-if="errors['username']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
-            {{ errors['username'] }}</div>
+          <label for="username" class="block text-sm font-pri text-gray-900">Username</label>
+          <InputText type="text" v-model="username" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Username"></InputText>
+          <div v-if="errors['username']" class="text-red-500 text-sm mt-1">{{ errors['username'] }}</div>
         </div>
 
-        <div>
-          <label for="firstName" class="block text-sm font-pri leading-6 text-gray-900">First Name</label>
-          <InputText type="text" v-model="firstName" class="text-emerald-600 text-sm font-pri"
-            placeholder="Enter your first name"></InputText>
-          <div v-if="errors['firstName']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
-            {{ errors['firstName'] }}</div>
-
-        </div>
-
-        <div>
-          <label for="lastName" class="block text-sm font-pri leading-6 text-gray-900">Last Name</label>
-          <InputText type="text" v-model="lastName" class="text-emerald-600 text-sm font-pri"
-            placeholder="Enter your last name"></InputText>
-          <div v-if="errors['lastName']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
-            {{ errors['lastName'] }}</div>
-
-        </div>
-
-        <div>
-          <label for="email" class="block text-sm font-pri leading-6 text-gray-900">Email Address</label>
-          <InputText type="text" v-model="email" class="text-emerald-600 text-sm font-pri"
-            placeholder="Enter your email address"></InputText>
-          <div v-if="errors['email']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌ {{
-            errors['email'] }}</div>
-
-        </div>
-
-        <div>
-          <div class="flex items-center justify-start">
-            <label for="password" class="block text-sm font-pri leading-6 text-gray-900">Password</label>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="firstName" class="block text-sm font-pri text-gray-900">First Name</label>
+            <InputText type="text" v-model="firstName" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="First Name"></InputText>
+            <div v-if="errors['firstName']" class="text-red-500 text-sm mt-1">{{ errors['firstName'] }}</div>
           </div>
-
-          <InputText v-model="password" type="password" class="text-emerald-600 text-sm font-pri"
-            placeholder="password must be at least 5 character belong"></InputText>
-          <div v-if="errors['password']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
-            {{ errors['password'] }}</div>
+          <div>
+            <label for="lastName" class="block text-sm font-pri text-gray-900">Last Name</label>
+            <InputText type="text" v-model="lastName" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Last Name"></InputText>
+            <div v-if="errors['lastName']" class="text-red-500 text-sm mt-1">{{ errors['lastName'] }}</div>
+          </div>
         </div>
 
         <div>
-          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-pri bg-red-500 font-pri text-white"
-            v-if="message">
-            <h4>{{ message }}</h4>
-          </div>
-          <button type="submit"
-            class="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-pri leading-6 text-white shadow-sm
-                    hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
-            Sign Up
-          </button>
-
+          <label for="email" class="block text-sm font-pri text-gray-900">Email Address</label>
+          <InputText type="text" v-model="email" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Email Address"></InputText>
+          <div v-if="errors['email']" class="text-red-500 text-sm mt-1">{{ errors['email'] }}</div>
         </div>
 
+        <div>
+          <label for="password" class="block text-sm font-pri text-gray-900">Password</label>
+          <InputText v-model="password" type="password" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Password (at least 5 characters)"></InputText>
+          <div v-if="errors['password']" class="text-red-500 text-sm mt-1">{{ errors['password'] }}</div>
+        </div>
+
+        <div>
+          <div id="flashMessage" class="text-center text-sm font-pri text-white bg-red-500 rounded-md p-2" v-if="message">
+            {{ message }}
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-pri py-2 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+          Sign Up
+        </button>
       </form>
 
-      <p class="mt-10 text-center font-pri text-sm text-gray-500">
+      <p class="mt-4 text-center font-pri text-sm text-gray-700">
         Already have an account?
-
-        {{ ' ' }}
-
-        <RouterLink :to="{ name: 'Login' }" class="font-pri leading-6 text-gray-600 hover:text-gray-400">Sign in
-        </RouterLink>
+        <RouterLink :to="{ name: 'Login' }" class="text-emerald-600 hover:underline">Sign in</RouterLink>
       </p>
     </div>
   </div>
 </template>
+

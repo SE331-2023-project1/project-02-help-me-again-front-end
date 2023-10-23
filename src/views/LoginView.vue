@@ -1,54 +1,34 @@
 <template>
-  <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-[350px] w-auto animate-fade-down rounded " src="../assets/navlogo.png" alt="Your Company">
-      <h2 class="mt-1 text-center text-lg font-pri leading-9 111 text-gray-600">Sign in to system</h2>
-    </div>
-
-    <div class="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" @submit.prevent="onSubmit">
+  <div class="flex min-h-full flex-1 flex-col justify-center items-center mt-8">
+    <div class="sm:w-full sm:max-w-sm p-8 mx-auto bg-white rounded-lg shadow-md">
+      <img class="mx-auto h-[120px] w-auto animate-fade-down rounded" src="../assets/navlogo.png" alt="Your Company">
+      <h2 class="mt-4 text-center text-xl font-pri text-gray-600">Sign in to the System</h2>
+      <form class="mt-6 space-y-4" action="#" @submit.prevent="onSubmit">
         <div>
-          <label for="email" class="block text-sm font-pri leading-6 text-gray-900">Username</label>
-          <InputText type="text" v-model="email" class="text-emerald-600 text-sm font-pri"
-            placeholder="Enter Your Username"></InputText>
-          <div v-if="errors['email']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌ {{
-            errors['email'] }}</div>
+          <label for="email" class="block text-sm font-pri text-gray-900">Username</label>
+          <InputText type="text" v-model="email" class="block w-full text-emerald-600 text-sm font-pri bg-white border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Enter Your Username"></InputText>
+          <div v-if="errors['email']" class="text-red-500 text-sm mt-1">{{ errors['email'] }}</div>
         </div>
         <div>
-          <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-pri leading-6 text-gray-900">Password</label>
-          </div>
-          <div class="mt-2">
-            <InputText v-model="password" type="password" class="text-emerald-600 text-sm font-pri"
-              placeholder="Enter Your Password"></InputText>
-            <div v-if="errors['password']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
-              {{ errors['password'] }}</div>
-
-          </div>
+          <label for="password" class="block text-sm font-pri text-gray-900">Password</label>
+          <InputText v-model="password" type="password" class="block w-full text-emerald-600 text-sm font-pri bg-white border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Enter Your Password"></InputText>
+          <div v-if="errors['password']" class="text-red-500 text-sm mt-1">{{ errors['password'] }}</div>
         </div>
         <div>
-          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-pri bg-red-500 font-pri text-white"
-            v-if="message">
-            <h4>{{ message }}</h4>
+          <div id="flashMessage" class="text-center text-sm font-pri text-white bg-red-500 rounded-md p-2" v-if="message">
+            {{ message }}
           </div>
-          <FlashMessage />
-          <button type="submit"
-            class="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-pri leading-6 text-white shadow-sm
-                    hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">Sign
-            in</button>
         </div>
+        <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-pri py-2 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200">Sign in</button>
       </form>
-      <p class="mt-10 font-pri text-center text-sm text-gray-500">
-        Doesn't have an account yet?
-        {{ ' ' }}
-        <RouterLink :to="{ name: 'register-page' }" class="font-pri leading-6 text-gray-600 hover:text-gray-400">
-          Sign Up here</RouterLink>
+      <p class="mt-4 text-center text-sm font-pri text-gray-500">
+        Don't have an account yet? 
+        <RouterLink :to="{ name: 'register-page' }" class="text-emerald-600 font-pri hover:underline">Sign Up here</RouterLink>
       </p>
-
     </div>
   </div>
 </template>
+
 
 <script setup lang="ts">
 import InputText from '@/components/InputText.vue'
