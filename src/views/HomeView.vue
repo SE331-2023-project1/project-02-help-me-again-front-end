@@ -12,7 +12,7 @@
     <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-24 gap-y-12 mt-10">
       <div class="member flex flex-col items-center justify-center">
         <img src="https://cdn.discordapp.com/attachments/715915099176566867/1143188492550156338/367401485_1654967945002581_6150912557020411318_n.jpg" alt="" class="animate-fade-down h-48 rounded-full mb-4 shadow-md -z-10" />
-        <!-- <h1 class="mt-6 text-2xl font-bold">Ph1r1</h1> -->
+        
         <p><span class="font-fig font-bold">Name:</span> Thiwakon Sakunchao</p>
         <p><span class="font-fig font-bold">Student ID:</span> 642115020</p>
         <div class="flex items-center">

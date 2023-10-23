@@ -58,13 +58,13 @@ const router = createRouter({
       path: '/students',
       name: 'student-list',
       component: StudentList,
-      props : (route) => ({page: parseInt(route.query?.page as string || '1'),limit: parseInt(route.query?.limit as string || '2')})
+      props: (route) => ({ page: parseInt(route.query?.page as string || '1'), limit: parseInt(route.query?.limit as string || '2') })
     },
     {
       path: '/advisors',
       name: 'advisor-list',
       component: AdvisorList,
-      props : (route) => ({page: parseInt(route.query?.page as string || '1'),limit: parseInt(route.query?.limit as string || '2')})
+      props: (route) => ({ page: parseInt(route.query?.page as string || '1'), limit: parseInt(route.query?.limit as string || '2') })
     },
     {
       path: '/advisors/:id',
@@ -87,34 +87,34 @@ const router = createRouter({
           // studentStore.setStudent(students.filter(student => student !== null) as StudentItem[]);
           useAdvisorStore().getAdvisorrById(id)
           // console.log(studentStore)
-      } catch (error: any) {
-        if (error.response && error.response.status === 404) {
-          // const errorUrl = error.response.config.url;
-          // const resource = errorUrl.includes('advisors') ? 'advisors' : 'students';
+        } catch (error: any) {
+          if (error.response && error.response.status === 404) {
+            // const errorUrl = error.response.config.url;
+            // const resource = errorUrl.includes('advisors') ? 'advisors' : 'students';
 
-          // console.log(`Resource '${resource}' not found.`);
-          // console.log("Resource not found")
-  
-          const errorUrl = error.response.config.url
-          console.log("Error URL:", errorUrl)
-      
-          const resourceIdentifier = errorUrl.split('/').pop() // Get the last segment
-          console.log("Resource Identifier:", resourceIdentifier)
-      
-          const isAdvisor = resourceIdentifier.charAt(0) === 'T' // Check the first character
-          console.log("Is Advisor:", isAdvisor)
-      
-          const resource = isAdvisor ? 'advisor' : 'student'
-          console.log("Resource:", resource)
+            // console.log(`Resource '${resource}' not found.`);
+            // console.log("Resource not found")
 
-          router.push({
-            name: '404-resource',
-            params: { resource }
-        })
-        } else {
-          router.push({ name: 'network-error'})
+            const errorUrl = error.response.config.url
+            console.log("Error URL:", errorUrl)
+
+            const resourceIdentifier = errorUrl.split('/').pop() // Get the last segment
+            console.log("Resource Identifier:", resourceIdentifier)
+
+            const isAdvisor = resourceIdentifier.charAt(0) === 'T' // Check the first character
+            console.log("Is Advisor:", isAdvisor)
+
+            const resource = isAdvisor ? 'advisor' : 'student'
+            console.log("Resource:", resource)
+
+            router.push({
+              name: '404-resource',
+              params: { resource }
+            })
+          } else {
+            router.push({ name: 'network-error' })
+          }
         }
-      }
       },
       children: [
         {
@@ -151,28 +151,28 @@ const router = createRouter({
             // const errorUrl = error.response.config.url;
             // console.log("Error URL:", errorUrl);
             // const resource = errorUrl.includes('T') ? 'advisors' : 'students';
-    
+
             // console.log(`Resource '${resource}' not found.`);
             // console.log("Resource not found")
 
             const errorUrl = error.response.config.url
             console.log("Error URL:", errorUrl)
-      
+
             const resourceIdentifier = errorUrl.split('/').pop() // Get the last segment
             console.log("Resource Identifier:", resourceIdentifier)
-      
+
             const isAdvisor = resourceIdentifier.charAt(0) === 'T' // Check the first character
             console.log("Is Advisor:", isAdvisor)
-      
+
             const resource = isAdvisor ? 'advisor' : 'student'
             console.log("Resource:", resource)
-              router.push({
-                name: '404-resource',
-                params: { resource }
+            router.push({
+              name: '404-resource',
+              params: { resource }
             })
-            } else {
-              router.push({ name: 'network-error'})
-            }
+          } else {
+            router.push({ name: 'network-error' })
+          }
         }
       },
       children: [
@@ -198,7 +198,7 @@ const router = createRouter({
       path: '/network-error',
       name: 'network-error',
       component: NetworkErrorView
-    },{
+    }, {
       path: '/add',
       name: 'add-person',
       component: AddPerson,
@@ -222,15 +222,15 @@ router.beforeEach(async () => {
     // console.log(studentStore.students)
   }
   if (studentStore.students.length === 0 && authStore.userRole?.includes("ROLE_ADVISOR")
-  && authStore.id != null) {
+    && authStore.id != null) {
     await studentStore.fetchStudentsByAdvisor(authStore.id)
     // console.log(studentStore.students)
   }
 
-  })
+})
 
-  router.afterEach(() => {
-    NProgress.done()
-  })
+router.afterEach(() => {
+  NProgress.done()
+})
 
 export default router

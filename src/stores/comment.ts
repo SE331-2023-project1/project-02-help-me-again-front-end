@@ -2,10 +2,10 @@ import { defineStore } from 'pinia'
 import type { CommentInfo } from '@/type'
 export const commentStudent = defineStore('comment', {
     state: () => ({
-        comment: [] as CommentInfo[] // ระบุประเภทข้อมูล CommentInfo ให้เป็น array
+        comment: [] as CommentInfo[] 
     }),
     actions: {
-        pushComment(comment: CommentInfo){ // ระบุประเภทข้อมูล CommentInfo ในพารามิเตอร์
+        pushComment(comment: CommentInfo){ 
             this.comment.push(comment)
         }
     }

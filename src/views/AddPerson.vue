@@ -13,24 +13,26 @@
         </select>
       </div>
 
-      <!-- แสดงแบบฟอร์มขึ้นอย่างใดอย่างหนึ่งขึ้นอยู่กับ selectedPersonType -->
+
       <div v-if="selectedPersonType === 'student'">
 
-        <!-- แบบฟอร์มสำหรับเพิ่มนักเรียน -->
+
         <form @submit.prevent="addStudent">
           <div class="grid grid-cols-2 gap-4">
             <div class="flex mb-3">
               <label for="studentName" class="my-auto mr-2">Name:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
-                v-model="studentName" type="text" id="studentName" required pattern="[A-Za-z]+" title="Please enter a valid name (only alphabetic characters are allowed).">
+                v-model="studentName" type="text" id="studentName" required pattern="[A-Za-z]+"
+                title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
 
             <div class="flex mb-3">
               <label for="studentSurname" class="my-auto mx-2">Surname:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
-                v-model="studentSurname" type="text" id="studentSurname" required pattern="[A-Za-z]+" title="Please enter a valid name (only alphabetic characters are allowed).">
+                v-model="studentSurname" type="text" id="studentSurname" required pattern="[A-Za-z]+"
+                title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
           </div>
 
@@ -40,19 +42,20 @@
             <input
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
               v-model="studentProfileImage" type="text" id="studentProfileImage" required pattern="https?://.+"
-              placeholder="Add link of your picture ('http://..' or 'https://..)" title="Must start with 'http://' or 'https://'">
+              placeholder="Add link of your picture ('http://..' or 'https://..)"
+              title="Must start with 'http://' or 'https://'">
           </div>
 
 
 
           <div class="flex mb-3">
-            <!-- สร้าง input fields สำหรับรายการคอร์ส -->
+
             <label for="studentCourseList" class="my-auto mr-2">Course List:</label>
             <select
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
               v-model="studentCourseList" id="studentCourseList" required>
               <option value disabled>Select Course</option>
-              <!-- วนลูปเพื่อแสดงรายชื่อครูที่มีใน store ของครู -->
+
               <option value="Math">Math</option>
               <option value="Science">Science</option>
               <option value="English">English</option>
@@ -75,14 +78,10 @@
 
 
             </select>
-            <!-- <input
-              class="w-full bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
-              v-model="studentCourseList" type="text" id="studentCourseList" required> -->
           </div>
 
 
           <div class="flex mb-3">
-            <!-- เลือกครูจาก dropdown list (ให้นำมาจาก store ของครู) -->
             <label for="studentAdvisor" class="my-auto mr-2">Advisor:</label>
             <select
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
@@ -99,23 +98,18 @@
               <option value="T901">Sophia Martinez</option>
               <option value="T012">Daniel Taylor</option>
 
-
-
-              <!-- วนลูปเพื่อแสดงรายชื่อครูที่มีใน store ของครู -->
-              <!-- <option v-for="advisor in advisors" :key="advisor.id" :value="advisor.id">{{ advisor.name }} {{
-                advisor.surname
-              }}</option> -->
             </select>
 
           </div>
 
 
-          
 
-          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-fig bg-green-500 font-fig text-white" v-if="message">
-              <h4>{{ message }}</h4>
-            </div>
-            <FlashMessage />
+
+          <div id="flashMessage"
+            class="mb-2 animate-pulse text-center text-base font-fig bg-green-500 font-fig text-white" v-if="message">
+            <h4>{{ message }}</h4>
+          </div>
+          <FlashMessage />
           <div class="flex justify-center mb-2">
             <button class="bg-green-500 hover:bg-green-700 shadow-md px-2 py-1
             rounded-lg font-bold text-white" type="submit">Add Student</button>
@@ -125,50 +119,39 @@
 
       <div v-else-if="selectedPersonType === 'advisor'">
 
-        <!-- แบบฟอร์มสำหรับเพิ่มครู -->
         <form @submit.prevent="addAdvisorr">
           <div class="grid grid-cols-2 gap-4">
             <div class="flex mb-3">
               <label for="advisorName" class="mr-2 my-auto">Name:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
-                v-model="AdvisorName" type="text" id="advisorName" required pattern="[A-Za-z]+" title="Please enter a valid name (only alphabetic characters are allowed).">
+                v-model="AdvisorName" type="text" id="advisorName" required pattern="[A-Za-z]+"
+                title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
 
             <div class="flex mb-3">
               <label for="advisorSurname" class="mr-2 my-auto">Surname:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
-                v-model="AdvisorSurname" type="text" id="advisorSurname" required pattern="[A-Za-z]+" title="Please enter a valid name (only alphabetic characters are allowed).">
+                v-model="AdvisorSurname" type="text" id="advisorSurname" required pattern="[A-Za-z]+"
+                title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
           </div>
 
 
           <div class="mb-3">
             <label for="advisorProfileImage" class="mr-2">Profile Image URL:</label>
-            <input  placeholder="Add link of your picture ('http://..' or 'https://..)"
+            <input placeholder="Add link of your picture ('http://..' or 'https://..)"
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
-              v-model="advisorProfileImage" type="text" id="advisorProfileImage" required pattern="https?://.+" title="Must start with 'http://' or 'https://'">
+              v-model="advisorProfileImage" type="text" id="advisorProfileImage" required pattern="https?://.+"
+              title="Must start with 'http://' or 'https://'">
           </div>
 
-          <!-- <div class="flex mb-3"> -->
-            <!-- เลือกนักเรียนจาก dropdown list (ให้นำมาจาก store ของนักเรียน) -->
-            <!-- <label class="mr-2 my-auto" for="advisorStudents">Students:</label> -->
-            <!-- <select
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"
-              v-model="advisorStudents" id="advisorStudents">
-              <option value="">Select Students</option> -->
-              <!-- วนลูปเพื่อแสดงรายชื่อนักเรียนที่มีใน store ของนักเรียน -->
-              <!-- <option v-for="student in students" :key="student.id" :value="student.id">{{ student.name }} {{
-                student.surname
-              }}</option> -->
-            <!-- </select> -->
-          <!-- </div> -->
-
-          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-fig bg-green-500 font-fig text-white" v-if="message">
-              <h4>{{ message }}</h4>
-            </div>
-            <FlashMessage />
+          <div id="flashMessage"
+            class="mb-2 animate-pulse text-center text-base font-fig bg-green-500 font-fig text-white" v-if="message">
+            <h4>{{ message }}</h4>
+          </div>
+          <FlashMessage />
           <div class="flex justify-center mb-2">
             <button class="bg-green-500 hover:bg-green-700 shadow-md px-2 py-1
             rounded-lg font-bold text-white" type="submit">Add Advisor</button>
@@ -193,7 +176,6 @@ const studentSurname = ref('');
 const studentProfileImage = ref('');
 const studentCourseList = ref('');
 const studentAdvisor = ref('');
-// const studentComment = ref('');
 
 const advisorName = ref('');
 const advisorSurname = ref('');
@@ -209,22 +191,21 @@ const addStudent = () => {
   const store = useStudentStore();
 
   const generateRandomID = () => {
-  const min = 100000; // Minimum 6-digit number
-  const max = 999999; // Maximum 6-digit number
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+    const min = 100000; 
+    const max = 999999; 
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   const newStudent = {
     name: studentName.value,
     surname: studentSurname.value,
-    id: generateRandomID().toString(), // สร้าง ID ใหม่ตามต้องการ
+    id: generateRandomID().toString(), 
     profileimage: studentProfileImage.value,
     courselist: studentCourseList.value.split(',').map(course => course.trim()),
     advisorID: studentAdvisor.value,
-    // comment: studentComment.value.split(',').map(comment => comment.trim()),
   };
 
-  store.addStudent(newStudent); // หรือ store.addAdvisor(newAdvisorr);
+  store.addStudent(newStudent); 
 
   console.log(newStudent)
 
@@ -233,15 +214,15 @@ const addStudent = () => {
     storeMessage.resetMessage()
   }, 4000)
 
-  // ล้างค่าฟอร์ม
+
   clearStudentForm();
 };
 
 const fetchAdvisors = () => {
-  // นำเข้า useAdvisorStore เพื่อเรียกใช้ฟังก์ชัน fetchAdvisors จาก store
+
   const advisorStore = useAdvisorStore();
   advisorStore.fetchAdvisors();
-  // advisorStore.getAdvisors
+
   console.log(advisorStore.getAdvisors)
 
 };
@@ -250,32 +231,32 @@ const addAdvisor = () => {
   const storeAdvisor = useAdvisorStore();
 
   const generateRandomTID = () => {
-  const min = 100; // Minimum 3-digit number
-  const max = 999; // Maximum 3-digit number
-  const randomThreeDigitNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-  return `T${randomThreeDigitNumber}`;};
+    const min = 100; 
+    const max = 999; 
+    const randomThreeDigitNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return `T${randomThreeDigitNumber}`;
+  };
 
   const newAdvisor = {
     name: advisorName.value,
     surname: advisorSurname.value,
-    id: generateRandomTID().toString(), // สร้าง ID ใหม่ตามต้องการ
+    id: generateRandomTID().toString(), 
     profileimage: advisorProfileImage.value,
     studentsId: advisorStudents.value,
   };
 
-  
 
-  storeAdvisor.addAdvisor(newAdvisor); // เพิ่มครูใหม่ลงในสถานะของครู
+  storeAdvisor.addAdvisor(newAdvisor);
   console.log(newAdvisor)
 
-  // เรียกใช้ fetchAdvisors() เพื่ออัปเดตรายการครูในหน้า AdvisorListView.vue
+
   fetchAdvisors();
 
   storeMessage.updateMessage('You are successfully for adding advisor.')
   setTimeout(() => {
     storeMessage.resetMessage()
   }, 4000)
-  // ล้างค่าฟอร์ม
+
   clearAdvisorForm();
 };
 
@@ -286,7 +267,7 @@ const clearStudentForm = () => {
   studentProfileImage.value = '';
   studentCourseList.value = '';
   studentAdvisor.value = '';
-  // studentComment.value = '';
+
 };
 
 const clearAdvisorForm = () => {
@@ -297,4 +278,3 @@ const clearAdvisorForm = () => {
 };
 </script>
 
-  @/stores/advisor

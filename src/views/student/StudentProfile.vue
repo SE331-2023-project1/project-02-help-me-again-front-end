@@ -1,7 +1,5 @@
 <script>
-
 </script>
-
 <template>
     <main class="mt-20 md:mt-[12%] lg:mt-[7%] flex flex-col items-center justify-center">
         <div class="font-fig flex items-center justify-center p-3 w-3/4 sm:w-2/4 h-4/5 text-2xl font-bold text-gray-900">
@@ -13,17 +11,7 @@
 
                 <img class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
                     src="src\assets\bodymoml.png" alt="Profile Picture">
-
-                <!-- <button type="button"
-                    class="py-3.5 px-7 text-base font-medium text-white focus:outline-none bg-emerald-600 rounded-lg border border-indigo-200 hover:bg-emerald-800 focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
-                    Change picture
-                </button> -->
-                <!-- <button type="button"
-            class="py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
-            Delete picture
-        </button> -->
             </div>
-
             <div class="items-center mt-4 lg:mt-6 w-full text-[#202142]">
 
                 <div
@@ -38,13 +26,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
     </main>
 </template>
   

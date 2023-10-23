@@ -25,17 +25,13 @@ advisorStore.getAdvisorById(props.id!).then((response) => {
 
 StudentService.getStudentsByAdvisor(props.id!).then((response) => {
   students.value = response
-  // console.log(response)
 })
-// console.log(students.value)
 </script>
 
 <template>
   <div v-if="students">
     <div class="text-lg text-center text-black font-sans hover:font-serif flex flex-col p-4">
-      <!-- <RouterLink :to="{name: 'advisor-detail', params: { id }}">Details</RouterLink> -->
     </div>
     <RouterView :advisor="advisors" :students="students"></RouterView>
   </div>
 </template>
-@/stores/advisor

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { type StudentItem } from '@/type';
-import { computed, ref, watchEffect, type Ref , onMounted } from 'vue';
+import { computed, ref, watchEffect, type Ref, onMounted } from 'vue';
 import StudentService from '@/services/StudentService';
 import StudentCard from '@/components/StudentCard.vue';
 import NProgress from 'nprogress'
-import { onBeforeRouteUpdate, useRouter,useRoute  } from 'vue-router'
+import { onBeforeRouteUpdate, useRouter, useRoute } from 'vue-router'
 import type { AxiosResponse } from 'axios';
 import { useStudentStore } from '@/stores/student';
 
@@ -12,7 +12,6 @@ import { useStudentStore } from '@/stores/student';
 const router = useRouter()
 const store = useStudentStore();
 const route = useRoute();
-
 const students: Ref<Array<StudentItem>> = ref([])
 const totalStudent = ref<number>(0)
 
@@ -29,28 +28,16 @@ const props = defineProps({
 })
 
 const fetchStudents = async () => {
-    // const response = await StudentService.getStudents(6, props.page);
     students.value = store.getStudentByPage(6, props.page)
     totalStudent.value = store.getStudent.length
-    // console.log(students.value);
 };
 
-// console.log(students)
 
 onBeforeRouteUpdate((to, from, next) => {
     const toPage = to.query.page ? Number(to.query.page) : 1
     students.value = store.getStudentByPage(6, toPage)
     totalStudent.value = store.getStudent.length
     next()
-    // StudentService.getStudents(6, toPage)
-    //     .then((response: AxiosResponse<StudentItem[]>) => {
-    //         students.value = response.data;
-    //         totalStudent.value = response.headers['x-total-count'];
-    //         next();
-    //     })
-    //     .catch(() => {
-    //         next({ name: 'NetworkError' });
-    //     });
 });
 
 const hasNextPage = computed(() => {
@@ -64,7 +51,7 @@ onMounted(() => {
 
 </script>
 
-<template> 
+<template>
     <div class="my-5">
         <main class="flex flex-col items-center justify-center">
 

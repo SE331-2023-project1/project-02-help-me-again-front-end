@@ -62,11 +62,6 @@ const onSubmit = handleSubmit((values) => {
     .studentRegister(values.username, values.firstName, values.lastName, values.email, values.password)
     .then(() => {
       router.push({ name: 'event-list' })
-      // storeMessage.updateMessage('Registration successful');
-      // setTimeout(() => {
-      //   storeMessage.resetMessage()
-      // }, 4000)
-
     })
     .catch(() => {
       storeMessage.updateMessage('could not register')
@@ -87,10 +82,6 @@ const onSubmit = handleSubmit((values) => {
       <h2 class="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-blue-700">
         Register to your account
       </h2>
-      <!-- <div class="animate-flashMessage mb-4" v-if="message">
-        <h4>{{ message }}</h4>
-      </div> -->
-
     </div>
 
     <div class="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">

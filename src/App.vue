@@ -11,23 +11,7 @@ const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <!-- <div id="flashMessage" class="animate-pulse text-center text-base font-fig bg-sky-500" v-if="message">
-  <h4>{{ message }}</h4>
-
-</div> -->
 <Navbar />
-   
-  <!-- <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/students">Students</RouterLink>
-        <RouterLink to="/advisors">Advisors</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-
-  <RouterView /> -->
 </template>
 
 <style scoped>

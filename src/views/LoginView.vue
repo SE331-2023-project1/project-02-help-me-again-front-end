@@ -1,10 +1,6 @@
 <template>
   <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-    <!-- <div id="flashMessage"
-      class="mb-2 animate-pulse text-center text-base font-fig bg-green-500 font-fig text-white" v-if="message">
-      <h4>{{ message }}</h4>
-    </div>
-    <FlashMessage /> -->
+
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <img class="mx-auto h-[160px] w-auto" src="../assets/bodymoms.png" alt="Your Company">
       <h2 class="mt-4 text-center text-lg font-bold leading-9 tracking-tight text-gray-900">Welcome to SE331 Project -
@@ -37,8 +33,8 @@
           </div>
         </div>
         <div>
-          <div id="flashMessage"
-            class="mb-2 animate-pulse text-center text-base font-fig bg-red-500 font-fig text-white" v-if="message">
+          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-fig bg-red-500 font-fig text-white"
+            v-if="message">
             <h4>{{ message }}</h4>
           </div>
           <FlashMessage />
@@ -77,13 +73,9 @@ const authStore = useAuthStore()
 
 const validationSchema = yup.object({
   email: yup.string()
-  //   .required('Please enter your email address.')
-  //   .matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/, 'Please enter a valid email address ending with example.com'),
   ,
   password: yup
     .string()
-  // .required('Please enter your password.')
-  // .min(6, 'Password must be at least 6 characters long.'), // Minimum 7 characters required
 })
 
 const { errors, handleSubmit } = useForm({
@@ -101,14 +93,6 @@ const onSubmit = handleSubmit((values) => {
   authStore.login(values.email, values.password)
     .then(() => {
       console.log('login success')
-      // storeMessage.updateMessage('Login successful');
-      // setTimeout(() => {
-      //   storeMessage.resetMessage()
-      // }, 1000)
-      // setTimeout(() => {
-
-      //   router.push({ name: 'home-page' })
-      // }, 1000)
       router.push({ name: 'home-page' })
 
     }).catch((err) => {

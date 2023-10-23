@@ -1,22 +1,18 @@
 <script setup lang="ts">
 import { type AdvisorItem } from '@/type';
-import { computed, ref, type Ref , onMounted} from 'vue';
+import { computed, ref, type Ref, onMounted } from 'vue';
 import AdvisorService from '@/services/AdvisorrService';
 import AdvisorCard from '@/components/AdvisorCard.vue';
 import NProgress from 'nprogress'
-import { onBeforeRouteUpdate, useRouter,useRoute } from 'vue-router'
+import { onBeforeRouteUpdate, useRouter, useRoute } from 'vue-router'
 import type { AxiosResponse } from 'axios';
 import { useAdvisorStore } from '@/stores/advisor';
 
 const router = useRouter();
 const route = useRoute();
-
 const store = useAdvisorStore();
-
-
 const advisors: Ref<Array<AdvisorItem>> = ref([])
 const totalAdvisor = ref<number>(0)
-// const total;
 
 const props = defineProps({
     page: {
@@ -30,66 +26,17 @@ const props = defineProps({
     }
 })
 
-
-
 const fetchAdvisors = () => {
-    
-    // const response = await AdvisorService.getAdvisors(6, props.page);
-    // const response = await AdvisorService.getAllAdvisors();
-    // const response = store.fetchAdvisors()
-    
-    // console.log(response)
-    // store.setAdvisor(response)
-    // store.fetchAdvisors()
     console.log(store.getAdvisors)
     advisors.value = store.getAdvisorByPage(6, props.page)
-    totalAdvisor.value = store.getAdvisors.length
-    // console.log(totalAdvisor.value)
-
-    // if (store.getAdvisors) {
-    //     const response2 = store.getAdvisors;
-    //     Advisors.value.push(...response2)
-    // }
-    
-    // totalAdvisor.value = advisors.value.length
-    // totalAdvisor.value = response.headers['x-total-count'];
-    // console.log(total?.length)
-    // console.log(advisors.value);
-    // console.log(props.page)
+    totalAdvisor.value = store.getAdvisors.length 
 };
-
-
-
-// console.log(advisors)
 
 onBeforeRouteUpdate((to, from, next) => {
     const toPage = to.query.page ? Number(to.query.page) : 1
     advisors.value = store.getAdvisorByPage(6, toPage)
-    // console.log(advisors.value)
     totalAdvisor.value = store.getAdvisors.length
     next()
-
-    // AdvisorService.getAdvisors(6, toPage)
-    //     .then((response: AxiosResponse<AdvisorItem[]>) => {
-    //         advisors.value = response.data;
-    //         if (store.getAdvisors) {
-    //             const response2 = store.getAdvisors;
-    //             advisors.value.push(...response2)
-    //         } 
-    //         totalAdvisor.value = response.headers['x-total-count'];
-    //         totalAdvisor.value =+ 1
-    //         next();
-    //     })
-    //     .catch(() => {
-    //         next({ name: 'NetworkError' });
-    //     });
-    
-    // const response = store.getAdvisors
-    
-    // advisors.value = response
-    // console.log(advisors.value)
-    // next()
-    
 });
 
 
@@ -99,9 +46,6 @@ const hasNextPage = computed(() => {
 });
 
 onMounted(() => {
-    // advisors.value = store.getAdvisorByPage(6, props.page)
-    // totalAdvisor.value = store.getAdvisors.length
-    // console.log(advisors.value)
     fetchAdvisors();
 });
 
@@ -146,4 +90,3 @@ onMounted(() => {
         </main>
     </div>
 </template>
-@/stores/advisor@/services/AdvisorService

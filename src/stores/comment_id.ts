@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
-import type { CommentInfo } from '@/type' // ตรวจสอบให้แน่ใจว่า CommentInfo มีค่า id
+import type { CommentInfo } from '@/type' 
 export const commentStudentId = defineStore('comment_id', {
     state: () => ({
-        comment_id: [] as CommentInfo[] // ระบุประเภทข้อมูล CommentInfo ให้เป็น array
+        comment_id: [] as CommentInfo[]
     }),
     actions: {
-        setComment(comment: CommentInfo[]){ // ระบุประเภทข้อมูล CommentInfo ในพารามิเตอร์
+        setComment(comment: CommentInfo[]){ 
             this.comment_id = comment
         }
     }
