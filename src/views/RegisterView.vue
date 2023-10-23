@@ -80,7 +80,7 @@ const onSubmit = handleSubmit((values) => {
       <img class="mx-auto h-[350px] w-auto animate-fade-down rounded " src="../assets/help.png" alt="" />
 
       <h2 class="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-pink-700">
-        Register to your account
+        Sign Up
       </h2>
     </div>
 
@@ -140,7 +140,7 @@ const onSubmit = handleSubmit((values) => {
           <button type="submit"
             class="flex w-full justify-center rounded-md bg-pink-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm
                     hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600">
-            Register
+            Sign Up
           </button>
 
         </div>
@@ -152,7 +152,7 @@ const onSubmit = handleSubmit((values) => {
 
         {{ ' ' }}
 
-        <RouterLink :to="{ name: 'Login' }" class="font-semibold leading-6 text-pink-600 hover:text-pink-400">Log in
+        <RouterLink :to="{ name: 'Login' }" class="font-semibold leading-6 text-pink-600 hover:text-pink-400">Sign in
         </RouterLink>
       </p>
     </div>

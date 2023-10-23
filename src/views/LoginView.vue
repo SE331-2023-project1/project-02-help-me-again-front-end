@@ -46,7 +46,7 @@
         Doesn't have an account yet?
         {{ ' ' }}
         <RouterLink :to="{ name: 'register-page' }" class="font-semibold leading-6 text-pink-600 hover:text-pink-400">
-          Try to register here</RouterLink>
+          Sign Up here</RouterLink>
       </p>
 
     </div>
