@@ -1,7 +1,8 @@
 @import './base.css';
-@import url('https://fonts.googleapis.com/css2?family=Borel&family=Caprasimo&family=DM+Sans:opsz@9..40&family=Shrikhand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&display=swap');
+
+
 
 body {
   background: linear-gradient(#91eae4,  #86A8E7 );
@@ -16,15 +17,15 @@ body {
 }
 
 .font-dm {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Playpen Sans', cursive;
 }
 
 .font-borel {
-  font-family: 'Borel', cursive;
+  font-family: 'Playpen Sans', cursive;
 }
 
 .font-cp {
-  font-family: 'Caprasimo', cursive;
+  font-family: 'Playpen Sans', cursive;
 }
 
 .crop {
@@ -118,11 +119,11 @@ body {
 }
 
 .font-noto {
-  font-family: 'Noto Serif', serif;
+  font-family: 'Playpen Sans', cursive;
 }
 
 .font-fig {
-  font-family: 'Figtree', sans-serif;
+  font-family: 'Playpen Sans', cursive;
 }
 
 @keyframes fadeDown {

@@ -32,7 +32,7 @@ const validationSchema = yup.object({
 
   password: yup.string()
     .required('The password is required')
-    .min(6, 'Password must be at least 6 characters long.'),
+    .min(5, 'Password must be at least 5 characters long.'),
 })
 
 const { errors, handleSubmit } = useForm({
@@ -127,7 +127,7 @@ const onSubmit = handleSubmit((values) => {
           </div>
 
           <InputText v-model="password" type="password" class="text-emerald-600 text-sm font-semibold"
-            placeholder="Create password"></InputText>
+            placeholder="password must be at least 5 character belong"></InputText>
           <div v-if="errors['password']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
             {{ errors['password'] }}</div>
         </div>
