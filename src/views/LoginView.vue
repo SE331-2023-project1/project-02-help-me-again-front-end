@@ -2,7 +2,7 @@
   <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-[350px] w-auto" src="../assets/navlogo.png" alt="Your Company">
+      <img class="mx-auto h-[350px] w-auto animate-fade-down rounded " src="../assets/navlogo.png" alt="Your Company">
       <h2 class="mt-1 text-center text-lg font-bold leading-9 tracking-tight text-pink-600">Sign in to system</h2>
     </div>
 

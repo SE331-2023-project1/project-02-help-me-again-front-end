@@ -138,7 +138,7 @@ body {
 
 .animate-fade-down {
   animation-name: fadeDown;
-  animation-duration: 0.5s; /* Adjust the duration as needed */
+  animation-duration: 1s; /* Adjust the duration as needed */
   animation-fill-mode: both;
 }
 
