@@ -54,29 +54,29 @@ export default {
 <template>
     <main class="flex flex-col items-center justify-center">
         <div
-            class="mt-5 font-fig flex items-center justify-center p-3 w-3/4 sm:w-2/4 h-4/5 text-2xl font-bold text-gray-900">
+            class="mt-5 font-pri flex items-center justify-center p-3 w-3/4 sm:w-2/4 h-4/5 text-2xl font-bold text-gray-900">
             Announcement(s)
         </div>
 
 
         <div
-            class="mt-5 mb-10 font-fig flex flex-col items-left justify-left p-3 w-3/4 sm:w-2/4 h-auto text-xl font-bold text-gray-900 bg-white border border-gray-300 rounded-lg shadow-md">
+            class="mt-5 mb-10 font-pri flex flex-col items-left justify-left p-3 w-3/4 sm:w-2/4 h-auto text-xl font-bold text-gray-900 bg-white border border-gray-300 rounded-lg shadow-md">
             <!-- Announcement Header with Photo, Name, Date, and Time -->
             <div class="flex items-center space-x-3">
                 <img src="src\assets\help.png" alt="Person's Photo" class="w-20 h-20 rounded-full">
                 <div>
-                    <p class="font-fig font-semibold text-md">Uppahman</p>
-                    <p class="font-fig text-sm font-semibold text-gray-600">Date: October 18, 2023</p>
-                    <p class="font-fig text-sm font-semibold text-gray-600">Time: 10:00 AM</p>
+                    <p class="font-pri font-semibold text-md">Dreygo</p>
+                    <p class="font-pri text-sm font-semibold text-gray-600">Date: December 2, 2023</p>
+                    <p class="font-pri text-sm font-semibold text-gray-600">Time: 05:12 AM</p>
                 </div>
             </div>
             <!-- Announcement Details -->
             <div class="mt-5 flex flex-col pl-3">
-                <p class="font-fig font-semibold text-md">Christmas Event !</p>
-                <p class="font-fig text-md text-gray-600">Ho Ho Ho kriๆๆๆๆ</p>
+                <p class="font-pri font-semibold text-md">December Event</p>
+                <p class="font-pri text-md text-gray-600">This mount we have big event for our student please prepare yourself</p>
             </div>
             <!-- Photo slider -->
-            <div class="mt-5  relative">
+            <!-- <div class="mt-5  relative">
                 <img :src="photos[selectedPhoto]" class="object-cover w-full h-60 md:h-96 rounded-lg"
                     alt="Selected Photo" />
                 <div
@@ -105,7 +105,7 @@ export default {
                         <span class="sr-only">Next</span>
                     </span>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </main>
