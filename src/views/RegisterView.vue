@@ -77,9 +77,9 @@ const onSubmit = handleSubmit((values) => {
 <template>
   <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-[160px] w-auto" src="../assets/bodymoms.png" alt="" />
+      <img class="mx-auto h-[350px] w-auto" src="../assets/help.png" alt="" />
 
-      <h2 class="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-blue-700">
+      <h2 class="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-pink-700">
         Register to your account
       </h2>
     </div>
@@ -138,8 +138,8 @@ const onSubmit = handleSubmit((values) => {
             <h4>{{ message }}</h4>
           </div>
           <button type="submit"
-            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm
-                    hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            class="flex w-full justify-center rounded-md bg-pink-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm
+                    hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600">
             Register
           </button>
 
@@ -152,7 +152,7 @@ const onSubmit = handleSubmit((values) => {
 
         {{ ' ' }}
 
-        <RouterLink :to="{ name: 'Login' }" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-400">Log in
+        <RouterLink :to="{ name: 'Login' }" class="font-semibold leading-6 text-pink-600 hover:text-pink-400">Log in
         </RouterLink>
       </p>
     </div>

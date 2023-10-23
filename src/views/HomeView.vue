@@ -5,7 +5,7 @@
 <template>
   <main class="flex flex-col items-center justify-center  text-black">
     <!-- <h1 class="font-fig text-3xl font-bold py-4 text-center">Component-Based Software Development</h1> -->
-    <a href="/" class="flex items-center"><img src="../assets/help.png" alt="" class="animate-fade-down rounded " /></a>
+    <a href="/Login" class="mt-3 flex items-center "><img src="../assets/help.png" alt="" class="animate-fade-down rounded " /></a>
     
     <br>
     <!-- <p class="font-fig font-bold text-base ">Group Name: Help Me PLEASE</p> -->

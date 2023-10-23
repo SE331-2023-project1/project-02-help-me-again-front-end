@@ -2,18 +2,16 @@
   <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-[160px] w-auto" src="../assets/bodymoms.png" alt="Your Company">
-      <h2 class="mt-4 text-center text-lg font-bold leading-9 tracking-tight text-gray-900">Welcome to SE331 Project -
-        BodyMom</h2>
-      <h2 class="mt-1 text-center text-lg font-bold leading-9 tracking-tight text-blue-700">Log in to your account</h2>
+      <img class="mx-auto h-[350px] w-auto" src="../assets/navlogo.png" alt="Your Company">
+      <h2 class="mt-1 text-center text-lg font-bold leading-9 tracking-tight text-pink-600">Sign in to system</h2>
     </div>
 
     <div class="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" action="#" @submit.prevent="onSubmit">
         <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email Address</label>
+          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
           <InputText type="text" v-model="email" class="text-emerald-600 text-sm font-semibold"
-            placeholder="example@example.com"></InputText>
+            placeholder="Enter Your Username"></InputText>
           <div v-if="errors['email']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌ {{
             errors['email'] }}</div>
         </div>
@@ -21,12 +19,12 @@
           <div class="flex items-center justify-between">
             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
             <div class="text-sm">
-              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password</a>
+              <a href="#" class="font-semibold text-pink-600 hover:text-pink-500">Forgot password</a>
             </div>
           </div>
           <div class="mt-2">
             <InputText v-model="password" type="password" class="text-emerald-600 text-sm font-semibold"
-              placeholder="Enter Password (at least 6 characters long)"></InputText>
+              placeholder="Enter Your Password"></InputText>
             <div v-if="errors['password']" class="text-red-500 text-sm my-2" style="font-weight: 600; font-size: small;">❌
               {{ errors['password'] }}</div>
 
@@ -39,15 +37,15 @@
           </div>
           <FlashMessage />
           <button type="submit"
-            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm
-                    hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Log
+            class="flex w-full justify-center rounded-md bg-pink-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm
+                    hover:bg-pink-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600">Sign
             in</button>
         </div>
       </form>
       <p class="mt-10 text-center text-sm text-gray-500">
         Doesn't have an account yet?
         {{ ' ' }}
-        <RouterLink :to="{ name: 'register-page' }" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-400">
+        <RouterLink :to="{ name: 'register-page' }" class="font-semibold leading-6 text-pink-600 hover:text-pink-400">
           Try to register here</RouterLink>
       </p>
 

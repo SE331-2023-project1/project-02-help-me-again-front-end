@@ -7,6 +7,14 @@ body {
   background: linear-gradient(135deg,#ffa9f9, #fff7ad  );
 }
 
+.submit-btn{
+  background-color: #5170ff;
+}
+
+.submit-btn:hover{
+  background-color: #ff66c4;
+}
+
 .font-dm {
   font-family: 'DM Sans', sans-serif;
 }
