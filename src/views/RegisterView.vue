@@ -82,32 +82,32 @@ const onSubmit = handleSubmit((values) => {
       <form class="mt-6 space-y-4" @submit.prevent="onSubmit">
         <div>
           <label for="username" class="block text-sm font-pri text-gray-900">Username</label>
-          <InputText type="text" v-model="username" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Username"></InputText>
+          <InputText type="text" v-model="username" class="block w-full text-sm font-pri text-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Username"></InputText>
           <div v-if="errors['username']" class="text-red-500 text-sm mt-1">{{ errors['username'] }}</div>
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label for="firstName" class="block text-sm font-pri text-gray-900">First Name</label>
-            <InputText type="text" v-model="firstName" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="First Name"></InputText>
+            <InputText type="text" v-model="firstName" class="block w-full text-sm font-pri text-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="First Name"></InputText>
             <div v-if="errors['firstName']" class="text-red-500 text-sm mt-1">{{ errors['firstName'] }}</div>
           </div>
           <div>
             <label for="lastName" class="block text-sm font-pri text-gray-900">Last Name</label>
-            <InputText type="text" v-model="lastName" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Last Name"></InputText>
+            <InputText type="text" v-model="lastName" class="block w-full text-sm font-pri text-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Last Name"></InputText>
             <div v-if="errors['lastName']" class="text-red-500 text-sm mt-1">{{ errors['lastName'] }}</div>
           </div>
         </div>
 
         <div>
           <label for="email" class="block text-sm font-pri text-gray-900">Email Address</label>
-          <InputText type="text" v-model="email" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Email Address"></InputText>
+          <InputText type="text" v-model="email" class="block w-full text-sm font-pri text-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Email Address"></InputText>
           <div v-if="errors['email']" class="text-red-500 text-sm mt-1">{{ errors['email'] }}</div>
         </div>
 
         <div>
           <label for="password" class="block text-sm font-pri text-gray-900">Password</label>
-          <InputText v-model="password" type="password" class="block w-full text-sm font-pri text-gray-700 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Password (at least 5 characters)"></InputText>
+          <InputText v-model="password" type="password" class="block w-full text-sm font-pri text-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Password (at least 5 characters)"></InputText>
           <div v-if="errors['password']" class="text-red-500 text-sm mt-1">{{ errors['password'] }}</div>
         </div>
 
@@ -117,12 +117,12 @@ const onSubmit = handleSubmit((values) => {
           </div>
         </div>
 
-        <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-pri py-2 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+        <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-pri py-2 rounded-md hover:bg-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-200">
           Sign Up
         </button>
       </form>
 
-      <p class="mt-4 text-center font-pri text-sm text-gray-700">
+      <p class="mt-4 text-center font-pri text-sm text-gray-500">
         Already have an account?
         <RouterLink :to="{ name: 'Login' }" class="text-emerald-600 hover:underline">Sign in</RouterLink>
       </p>

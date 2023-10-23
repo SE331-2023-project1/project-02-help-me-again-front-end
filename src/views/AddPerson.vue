@@ -1,23 +1,17 @@
 <template>
-  <div class="flex flex-col p-3 w-3/4 h-4/5 border border-gray-700
-        rounded-lg mb-4 bg-white shadow-md my-5 mx-auto">
-
+  <div class="flex flex-col p-3 w-3/4 h-4/5 border border-gray-700 rounded-lg mb-4 bg-gray-100 shadow-md my-5 mx-auto">
     <div class="font-pri mx-5 text-black">
       <h1 class="flex justify-center font-pri text-2xl mb-3 text-gray-600">Add Person</h1>
       <div class="flex mb-3 justify-center items-center">
-  <label class="my-auto" for="personType">Select Person Type:</label>
-  <select v-model="selectedPersonType" id="personType"
-    class="ml-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5">
-    <option value="student">Student</option>
-    <option value="advisor">Advisor</option>
-  </select>
-</div>
-
-
-
+        <label class="my-auto" for="personType">Select Person Type:</label>
+        <select v-model="selectedPersonType" id="personType"
+          class="ml-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5">
+          <option value="student">Student</option>
+          <option value="advisor">Advisor</option>
+        </select>
+      </div>
+      
       <div v-if="selectedPersonType === 'student'">
-
-
         <form @submit.prevent="addStudent">
           <div class="grid grid-cols-2 gap-4">
             <div class="flex mb-3">
@@ -25,7 +19,8 @@
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentName" type="text" id="studentName" required pattern="[A-Za-z]+"
-                title="Please enter a valid name (only alphabetic characters are allowed).">
+                title="Please enter a valid name (only alphabetic characters are allowed)."
+              />
             </div>
 
             <div class="flex mb-3">
@@ -33,7 +28,8 @@
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentSurname" type="text" id="studentSurname" required pattern="[A-Za-z]+"
-                title="Please enter a valid name (only alphabetic characters are allowed).">
+                title="Please enter a valid name (only alphabetic characters are allowed)."
+              />
             </div>
           </div>
 
@@ -107,18 +103,13 @@
 </div>
             </div>
 
-         
-
-
-
-
           <div id="flashMessage"
             class="mb-2 animate-pulse text-center text-base font-pri bg-gray-500 font-pri text-white" v-if="message">
             <h4>{{ message }}</h4>
           </div>
           <FlashMessage />
           <div class="flex justify-center mb-2">
-            <button class="bg-gray-500 hover:bg-gray-700 shadow-md px-2 py-1
+            <button class="bg-green-500 hover:bg-green-700 shadow-md px-2 py-1
             rounded-lg font-pri text-white" type="submit">Add Student</button>
           </div>
         </form>
@@ -160,7 +151,7 @@
           </div>
           <FlashMessage />
           <div class="flex justify-center mb-2">
-            <button class="bg-gray-500 hover:bg-gray-700 shadow-md px-2 py-1
+            <button class="bg-green-500 hover:bg-green-700 shadow-md px-2 py-1
             rounded-lg font-bold text-white" type="submit">Add Advisor</button>
           </div>
         </form>
