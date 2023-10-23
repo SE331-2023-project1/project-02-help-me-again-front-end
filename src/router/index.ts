@@ -1,12 +1,18 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import StudentList from '../views/StudentListView.vue'
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/students',
+      name: 'student-list',
+      component: StudentList
+    },
+    {      path: '/teacher',
+    name: 'teacher-list',
+    component: StudentList
   }
-
-  return { count, doubleCount, increment }
+]
 })
