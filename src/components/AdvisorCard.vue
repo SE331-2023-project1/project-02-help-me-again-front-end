@@ -23,11 +23,11 @@ defineProps({
             <div class="">
                 <span class="text-xs text-gray-500 font-fig">ID: {{ advisor?.advisorID }}</span> <br>
 
-                <span class="font-bold font-fig"> {{ advisor?.name }} {{ advisor?.surname }}</span>
+                <span class="font-bold font-fig"> {{ advisor?.firstName }} {{ advisor?.lastName }}</span>
             </div> -->
 
 
-  <RouterLink :to="{ name: 'advisor-detail', params: { id: advisor?.id } }">
+  <RouterLink :to="{ firstName: 'advisor-detail', params: { id: advisor?.id } }">
     <div class="advisor-class flex flex-col items-center justify-center">
       <div
         class="grid gap-5 grid-cols-2 p-5 w-80 h-[130px] cursor-pointer border border-gray-700 rounded-lg mb-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-md hover:bg-gray-100 bg-white"
@@ -39,7 +39,7 @@ defineProps({
         <div class="">
           <!-- <span class="text-xs text-gray-500">ID: {{ advisor?.id }}</span> <br /> -->
 
-          <span class="font-fig text-lg font-bold text-black"> {{ advisor?.name }} {{ advisor?.surname }}</span> <br>
+          <span class="font-fig text-lg font-bold text-black"> {{ advisor?.firstName }} {{ advisor?.lastName }}</span> <br>
           <span class="font-fig font-semibold text-sm text-gray-500"> {{ advisor?.department }} </span> <br>
           <span class="font-fig font-semibold text-sm text-gray-500"> {{ advisor?.academicposition }} </span>
 

@@ -56,7 +56,7 @@ const addComment = () => {
 
     comment_input.value = '';
   }
-  store.updateMessage('You are successfully for adding comment to ' + props.student?.name + ' ' + props.student?.surname)
+  store.updateMessage('You are successfully for adding comment to ' + props.student?.name + ' ' + props.student?.lastName)
   setTimeout(() => {
     store.resetMessage()
   }, 4000)
@@ -75,7 +75,7 @@ const addComment = () => {
         </div>
         <div class="">
           <span class="text-base text-gray-500 font-pri">ID: {{ student?.id }}</span> <br />
-          <span class="font-pri name font-bold text-black"> {{ student?.name }} {{ student?.surname }}</span>
+          <span class="font-pri name font-bold text-black"> {{ student?.name }} {{ student?.lastName }}</span>
           <ul class="list-disc list-inside">
             <span class="font-pri font-bold text-black text-xl course">Course List</span>
             <li v-for="course in student?.courselist" :key="course" class="text-xl course font-pri text-black">
@@ -92,7 +92,7 @@ const addComment = () => {
               <div class="flex justify-center items-center">
                 <img :src="advisor?.profileimage" class="w-10 h-10 object-cover rounded-full mr-2">
                 <div class="flex flex-col">
-                  <span class="advisorid font-pri text-left">{{ advisor?.name }} {{ advisor?.surname }}</span>
+                  <span class="advisorid font-pri text-left">{{ advisor?.name }} {{ advisor?.lastName }}</span>
                   <span class="advisorid font-pri text-left">Advisor ID: {{ student.advisor.id }}</span>
                 </div>
               </div>

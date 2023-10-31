@@ -25,6 +25,11 @@ export const useAdvisorStore = defineStore('advisor', {
         setAdvisor(advisors: AdvisorItem[]) {
             this.advisors = advisors
         },
+        async fetchAdvisorByStudent(id: string){
+            const response = await AdvisorService.getAdvisorByStudent(id)
+            const advisorList = [response.data]
+            this.setAdvisor(advisorList)
+        },
         fetchAdvisors() {
             try {
                 return this.advisors
@@ -63,7 +68,7 @@ export const useAdvisorStore = defineStore('advisor', {
                 id: advisor.id,
                 studentsId: advisor.studentsId,
                 name: advisor.name,
-                surname: advisor.surname,
+                lastName: advisor.lastName,
                 profileimage: advisor.profileimage,
               };
     

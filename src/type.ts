@@ -1,6 +1,6 @@
 export interface StudentItem {
-    name: string;
-    surname: string;
+    firstName: string;
+    lastName: string;
     id: string;
     profileimage: string;
     courselist: string[];
@@ -10,8 +10,8 @@ export interface StudentItem {
 }
 export interface AdvisorItem {
     [x: string]: any;
-    name: string;
-    surname: string;
+    firstName: string;
+    lastName: string;
     profileimage: string;
     id: string;
     roles: string []
@@ -26,4 +26,18 @@ export interface AnnouncementItem {
     title: string,
     description: string,
     files: string []
+}
+
+export interface RegisterUserItem {
+    firstName: string,
+    lastName: string, 
+    id: string, 
+    images: string[] ,
+    courselist?: string[],
+    advisorID?: string,
+    password: string,
+    email: string,
+    username: string,
+    role?: string[],
+    ownStudent?: []
 }

@@ -63,7 +63,7 @@ onMounted(async () => {
       username.value = response?.username;
       id.value = response?.id;
       firstName.value = response?.name;
-      lastName.value = response?.surname;
+      lastName.value = response?.lastName;
       department.value = response?.department
       images = response?.images
 

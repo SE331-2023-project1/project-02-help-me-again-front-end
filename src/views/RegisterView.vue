@@ -60,8 +60,9 @@ const { value: password } = useField<string>('password')
 const onSubmit = handleSubmit((values) => {
   authStore
     .studentRegister(values.username, values.firstName, values.lastName, values.email, values.password)
-    .then(() => {
-      router.push({ name: 'event-list' })
+    .then((res) => {
+      console.log(res.data);
+      router.push({ name: 'Login' })
     })
     .catch(() => {
       storeMessage.updateMessage('could not register')
@@ -81,7 +82,7 @@ const onSubmit = handleSubmit((values) => {
       <h2 class="text-2xl font-pri text-gray-700 text-center">Sign Up</h2>
       <form class="mt-6 space-y-4" @submit.prevent="onSubmit">
         <div>
-          <label for="username" class="block text-sm font-pri text-gray-900">Username</label>
+          <label for="username" class="block text-sm font-pri text-gray-900">Student ID</label>
           <InputText type="text" v-model="username" class="block w-full text-sm font-pri text-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200" placeholder="Username"></InputText>
           <div v-if="errors['username']" class="text-red-500 text-sm mt-1">{{ errors['username'] }}</div>
         </div>

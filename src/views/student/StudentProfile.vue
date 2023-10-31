@@ -44,7 +44,7 @@ const advisor = ref<AdvisorItem | null>(null)
 
 let advisorId = ''
 let advisorName = ''
-let advisorSurname = ''
+let advisorLastName = ''
 let advisorImages = ''
 
 let images = ''
@@ -74,13 +74,13 @@ onMounted(async () => {
       username.value = response?.username;
       id.value = response?.id;
       firstName.value = response?.name;
-      lastName.value = response?.surname;
+      lastName.value = response?.lastNname;
       department.value = response?.department
       images = response?.images
 
       advisorId = responseAdvisor?.id
       advisorName = responseAdvisor?.name
-      advisorSurname = responseAdvisor?.surname
+      advisorLastName = responseAdvisor?.lastName
       advisorImages = responseAdvisor?.images
         // console.log(response)
     }
@@ -271,7 +271,7 @@ const saveAndSubmitForm = async () => {
             <div class="flex justify-center items-center ">
               <img :src="advisorImages" class="w-10 h-10 object-cover rounded-full mr-2">
               <div class="flex flex-col">
-                <span class="advisorid font-fig text-left text-sm font-semibold">{{ advisorName }} {{ advisorSurname }}</span>
+                <span class="advisorid font-fig text-left text-sm font-semibold">{{ advisorName }} {{ advisorLastName }}</span>
                 <!-- <span class="advisorid font-fig text-left">Advisor ID: {{ student.advisor.id }}</span> -->
               </div>
             </div>

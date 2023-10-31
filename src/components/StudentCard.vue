@@ -5,13 +5,13 @@ import type { PropType } from 'vue'
 defineProps({
   student: {
     type: Object as PropType<StudentItem>,
-    require: true
+    required: true
   }
 })
 </script>
 
 <template>
-  <RouterLink :to="{name: 'student-detail', params: {id: student?.id}}">
+  <RouterLink :to="{firstname: 'student-detail', params: {id: student?.id}}">
     <!-- {{ console.log(student) }} -->
     <div class="student-class flex flex-col items-center justify-center">
       <div
@@ -23,7 +23,7 @@ defineProps({
         </div>
         <div class="">
           <span class="font-fig text-xs text-gray-500">StudentID: {{ student?.username }}</span> <br />
-          <span class="font-fig font-bold text-black"> {{ student?.name }} {{ student?.lastName }}</span>
+          <span class="font-fig font-bold text-black"> {{ student?.firstName }} {{ student?.lastName }}</span>
 
           <ul class="list-disc list-inside">
             <li v-for="course in student?.courselist" :key="course" class="text-gray-700 text-sm font-fig">

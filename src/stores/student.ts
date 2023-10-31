@@ -71,7 +71,7 @@ export const useStudentStore = defineStore('student', {
             try {
                 const requestData = {
                     name: student.name,
-                    surname: student.surname,
+                    lastName: student.lastName,
                     id: student.id,
                     profileimage: student.profileimage,
                     courselist: student.courselist,

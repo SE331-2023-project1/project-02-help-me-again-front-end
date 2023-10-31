@@ -87,7 +87,7 @@ if (token && userRole && id) {
           </li>
           <li v-if="authStore.userRole" class="font-dm mb-2 hover:bg-blue-100 p-3 rounded-md flex items-center">
             <!-- <router-link to="/profile" class="nav-link">
-              <font-awesome-icon icon="user"/> {{ authStore.currentUserName }}
+              <font-awesome-icon icon="user"/> {{ authStore.currentUsername }}
             </router-link> -->
             <a href="/" class="nav-link hover:cursor-pointer" @click="logout">
 

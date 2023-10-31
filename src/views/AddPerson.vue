@@ -15,7 +15,7 @@
         <form @submit.prevent="addStudent">
           <div class="grid grid-cols-2 gap-4">
             <div class="flex mb-3">
-              <label for="studentName" class="my-auto mx-auto">Name:</label>
+              <label for="studentName" class="my-auto mx-auto">First Name:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentName" type="text" id="studentName" required pattern="[A-Za-z]+"
@@ -24,15 +24,35 @@
             </div>
 
             <div class="flex mb-3">
-              <label for="studentSurname" class="my-auto mx-auto">Surname:</label>
+              <label for="studentLastName" class="my-auto mx-auto">Last name:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-                v-model="studentSurname" type="text" id="studentSurname" required pattern="[A-Za-z]+"
+                v-model="studentLastName" type="text" id="studentLastName" required pattern="[A-Za-z]+"
                 title="Please enter a valid name (only alphabetic characters are allowed)."
               />
             </div>
           </div>
 
+          <div class="mb-3">
+            <label for="student id" class="mr-2">Student ID:</label>
+            <input placeholder="642115000"
+              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+              v-model="username" >
+          </div>
+
+          <div class="mb-3">
+            <label for="Email" class="mr-2">Email:</label>
+            <input placeholder="email"
+              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+              v-model="email" >
+          </div>
+
+          <div class="mb-3">
+            <label for="Password" class="mr-2">Password:</label>
+            <input placeholder="Password" type="password"
+              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+              v-model="password" >
+          </div>
 
           <div class="mb-3">
             <label for="studentProfileImage" class="mr-2">Profile Image URL:</label>
@@ -117,21 +137,21 @@
 
       <div v-else-if="selectedPersonType === 'advisor'">
 
-        <form @submit.prevent="addAdvisorr">
+        <form @submit.prevent="addAdvisor">
           <div class="grid grid-cols-2 gap-4">
             <div class="flex mb-3">
               <label for="advisorName" class="mr-2 my-auto">Name:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-                v-model="AdvisorName" type="text" id="advisorName" required pattern="[A-Za-z]+"
+                v-model="advisorName" type="text" id="advisorName" required pattern="[A-Za-z]+"
                 title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
 
             <div class="flex mb-3">
-              <label for="advisorSurname" class="mr-2 my-auto">Surname:</label>
+              <label for="advisorLastName" class="mr-2 my-auto">Last name:</label>
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-                v-model="AdvisorSurname" type="text" id="advisorSurname" required pattern="[A-Za-z]+"
+                v-model="advisorLastName" type="text" id="advisorLastName" required pattern="[A-Za-z]+"
                 title="Please enter a valid name (only alphabetic characters are allowed).">
             </div>
           </div>
@@ -143,6 +163,27 @@
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
               v-model="advisorProfileImage" type="text" id="advisorProfileImage" required pattern="https?://.+"
               title="Must start with 'http://' or 'https://'">
+          </div>
+
+          <div class="mb-3">
+            <label for="Username" class="mr-2">Username:</label>
+            <input placeholder="Username"
+              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+              v-model="username" >
+          </div>
+
+          <div class="mb-3">
+            <label for="Email" class="mr-2">Email:</label>
+            <input placeholder="email"
+              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+              v-model="email" >
+          </div>
+
+          <div class="mb-3">
+            <label for="Password" class="mr-2">Password:</label>
+            <input placeholder="Password" type="password"
+              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+              v-model="password" >
           </div>
 
           <div id="flashMessage"
@@ -167,16 +208,22 @@ import { useAdvisorStore } from '@/stores/advisor';
 import { useRouter } from 'vue-router';
 import { useMessageStore } from '@/stores/message';
 import { storeToRefs } from 'pinia';
+import AdvisorService from '@/services/AdvisorService';
+import StudentService from '@/services/StudentService';
+
+const username = ref('')
+const email = ref('')
+const password = ref('')
 
 const selectedPersonType = ref('student');
 const studentName = ref('');
-const studentSurname = ref('');
+const studentLastName = ref('');
 const studentProfileImage = ref('');
 const studentCourseList = ref('');
 const studentAdvisor = ref('');
 
 const advisorName = ref('');
-const advisorSurname = ref('');
+const advisorLastName = ref('');
 const advisorProfileImage = ref('');
 const advisorStudents = ref('');
 
@@ -195,17 +242,25 @@ const addStudent = () => {
   };
 
   const newStudent = {
-    name: studentName.value,
-    surname: studentSurname.value,
+    firstName: studentName.value as string,
+    lastName: studentLastName.value as string, 
     id: generateRandomID().toString(), 
-    profileimage: studentProfileImage.value,
+    images: [studentProfileImage.value as string] ,
     courselist: studentCourseList.value.split(',').map(course => course.trim()),
     advisorID: studentAdvisor.value,
+    password: password.value as string,
+    email: email.value as string,
+    username: username.value as string
   };
 
-  store.addStudent(newStudent); 
 
-  console.log(newStudent)
+  StudentService.addStudent(newStudent)
+  .then( res => {
+    console.log(newStudent);
+    console.log(res.data);
+  }).catch(err => {
+    console.log(err);
+  })
 
   storeMessage.updateMessage('You are successfully for adding student.')
   setTimeout(() => {
@@ -236,16 +291,31 @@ const addAdvisor = () => {
   };
 
   const newAdvisor = {
-    name: advisorName.value,
-    surname: advisorSurname.value,
+    firstName: advisorName.value as string,
+    lastName: advisorLastName.value as string,
     id: generateRandomTID().toString(), 
-    profileimage: advisorProfileImage.value,
-    studentsId: advisorStudents.value,
+    images: [advisorProfileImage.value as string],
+    roles: [],
+    password: password.value as string,
+    email: email.value as string,
+    username: username.value as string
+
   };
 
+  
+  AdvisorService.addAdvisor(newAdvisor)
+  .then( res => {
+    console.log(newAdvisor);
+    
+    console.log("Successs");
+    
+    console.log(res.data);
+  }).catch(err => {
+    console.log(err);
+  })
 
-  storeAdvisor.addAdvisor(newAdvisor);
-  console.log(newAdvisor)
+  // storeAdvisor.addAdvisor(newAdvisor);
+  // console.log(newAdvisor)
 
 
   fetchAdvisors();
@@ -261,7 +331,7 @@ const addAdvisor = () => {
 
 const clearStudentForm = () => {
   studentName.value = '';
-  studentSurname.value = '';
+  studentLastName.value = '';
   studentProfileImage.value = '';
   studentCourseList.value = '';
   studentAdvisor.value = '';
@@ -270,7 +340,7 @@ const clearStudentForm = () => {
 
 const clearAdvisorForm = () => {
   advisorName.value = '';
-  advisorSurname.value = '';
+  advisorLastName.value = '';
   advisorProfileImage.value = '';
   advisorStudents.value = '';
 };

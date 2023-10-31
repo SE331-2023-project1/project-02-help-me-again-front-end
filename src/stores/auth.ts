@@ -60,6 +60,7 @@ export const useAuthStore = defineStore('auth', {
       images: string[]
       ) {
       const response = await apiClient.post('/api/v1/auth/register/student', {
+        id: generateRandomID().toString(), 
         username: username,
         firstname: firstName,
         lastname: lastName,
@@ -107,7 +108,7 @@ export const useAuthStore = defineStore('auth', {
       const response = await apiClient.put('/updatestudents', {
         id: id,
         name: firstName,
-        surname: lastName,
+        lastName: lastName,
       })
       return response
     },
@@ -115,7 +116,7 @@ export const useAuthStore = defineStore('auth', {
       const response = await apiClient.put('/updateadvisors', {
         id: id,
         name: firstName,
-        surname: lastName,
+        lastName: lastName,
       })
       return response
     },
@@ -143,3 +144,9 @@ export const useAuthStore = defineStore('auth', {
     }
   }
 })
+function generateRandomID() {
+  const min = 100000; 
+  const max = 999999; 
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+

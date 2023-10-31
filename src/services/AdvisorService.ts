@@ -1,6 +1,6 @@
 import apiClient from './AxiosClient'
 import type { AxiosResponse } from 'axios'
-import type { AdvisorItem } from '@/type'
+import type { AdvisorItem, RegisterUserItem } from '@/type'
 
 export default {
   getAdvisors(perPage: number, page: number): Promise<AxiosResponse<AdvisorItem[]>> {
@@ -19,6 +19,9 @@ export default {
   },
   getAdvisorrByKeyword(keyword: string, perPage: number, page: number): Promise<AxiosResponse<AdvisorItem[]>>{
     return apiClient.get<AdvisorItem[]>('/advisors?filter=' + keyword + '&_limit=' + perPage + '&_page=' + page)
+  },
+  addAdvisor(advisor: RegisterUserItem): Promise<AxiosResponse<AdvisorItem>> {
+    return apiClient.post<AdvisorItem>("/api/v1/auth/register/advisor", advisor)
   }
 
 }

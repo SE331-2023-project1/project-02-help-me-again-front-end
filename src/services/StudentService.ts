@@ -1,6 +1,6 @@
 import apiClient from './AxiosClient'
 import type { AxiosResponse } from 'axios'
-import type { StudentItem } from '@/type'
+import type { RegisterUserItem, StudentItem } from '@/type'
 
 export default {
   getStudents(perPage: number, page: number): Promise<AxiosResponse<StudentItem[]>> {
@@ -20,5 +20,8 @@ export default {
 
   getStudentsByKeyword(keyword: string, perPage: number, page: number): Promise<AxiosResponse<StudentItem[]>>{
     return apiClient.get<StudentItem[]>('/students?filter=' + keyword + '&_limit=' + perPage + '&_page=' + page)
+  },
+  addStudent(student: RegisterUserItem): Promise<AxiosResponse<StudentItem>> {
+    return apiClient.post("/api/v1/auth/register/student", student)
   }
 }
