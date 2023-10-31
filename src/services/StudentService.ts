@@ -16,5 +16,9 @@ export default {
   },
   getStudentsByAdvisor(id :string) : Promise<AxiosResponse<StudentItem[]>> {
     return apiClient.get<StudentItem[]>('/studentsByAdvisor/'+id.toString())
+  },
+
+  getStudentsByKeyword(keyword: string, perPage: number, page: number): Promise<AxiosResponse<StudentItem[]>>{
+    return apiClient.get<StudentItem[]>('/students?filter=' + keyword + '&_limit=' + perPage + '&_page=' + page)
   }
 }
