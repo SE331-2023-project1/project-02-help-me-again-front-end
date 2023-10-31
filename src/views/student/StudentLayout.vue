@@ -29,6 +29,7 @@ studentStore.getStudentById(props.id!)
         <div class="text-lg text-center text-black font-sans hover:font-serif flex flex-col p-4">
         </div>
         <RouterView :student="student" :advisor="advisor"></RouterView>
+        <RouterLink :to="{ name: 'connect-student', params: { id: student?.id } }">connect-student</RouterLink>
 
     </div>
 </template>

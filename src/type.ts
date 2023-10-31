@@ -41,3 +41,22 @@ export interface RegisterUserItem {
     role?: string[],
     ownStudent?: []
 }
+
+export interface AdvisorData {
+    id: number;
+    advisorID: string;
+    name: string;
+    surname: string;
+    position: string;
+    image: string[];
+    department: string;
+  }
+
+  export interface StudentConnect {
+    id: number;
+    studentID: string;
+    name: string;
+    surname: string;
+    advisor: AdvisorData;
+  }
+  

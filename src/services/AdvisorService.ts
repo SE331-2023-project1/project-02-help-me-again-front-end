@@ -2,6 +2,7 @@ import apiClient from './AxiosClient'
 import type { AxiosResponse } from 'axios'
 import type { AdvisorItem, RegisterUserItem } from '@/type'
 
+
 export default {
   getAdvisors(perPage: number, page: number): Promise<AxiosResponse<AdvisorItem[]>> {
     // perPage is limit
@@ -23,5 +24,15 @@ export default {
   addAdvisor(advisor: RegisterUserItem): Promise<AxiosResponse<AdvisorItem>> {
     return apiClient.post<AdvisorItem>("/api/v1/auth/register/advisor", advisor)
   }
-
+  ,
+  getAdvisorByKeyword(
+    keyword: string,
+    perPage: number,
+    page: number
+  ): Promise<AxiosResponse<AdvisorItem[]>> {
+    return apiClient.get<AdvisorItem[]>(
+      "/advisors?title=" + keyword + "&_limit=" + perPage + "&_page=" + page
+    );
+  },
 }
+

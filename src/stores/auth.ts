@@ -1,7 +1,5 @@
 import { defineStore } from 'pinia'
-
 import axios from 'axios'
-
 import type { AxiosInstance } from 'axios'
 // import type { EventOrganizer } from '@/type'
 import type { StudentItem, AdvisorItem } from '@/type'
