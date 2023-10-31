@@ -8,7 +8,6 @@ import AdvisorLayout from '../views/advisor/AdvisorLayout.vue'
 import AdvisorDetail from '../views/advisor/AdvisorDetail.vue'
 import NetworkErrorView from '../views/NetworkErrorView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
-import HomePage from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import AnnouncementView from '../views/announcement/AnnouncementView.vue'
@@ -37,7 +36,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home-page',
-      component: HomePage
+      component: HomeView
     },
     {
       path: '/Login',
@@ -241,7 +240,7 @@ router.beforeEach(async () => {
   const advisorStore = useAdvisorStore()
   const studentStore = useStudentStore()
   const authStore = useAuthStore()
-  const announcementStore = useAnnouncementStore()
+  // const announcementStore = useAnnouncementStore()
   if (advisorStore.advisors.length === 0 && authStore.userRole?.includes("ROLE_ADMIN")) {
     await advisorStore.fetchAdvisorsFromDB()
   }
@@ -269,9 +268,9 @@ router.beforeEach(async () => {
     await studentStore.fetchStudentById(authStore.id)
     // console.log(studentStore.students)
   }
-  if (announcementStore.announcements.length === 0 ) {
-    await announcementStore.fetchAnnouncements()
-  }
+  // if (announcementStore.announcements.length === 0 ) {
+  //   await announcementStore.fetchAnnouncements()
+  // }
   })
 
   router.afterEach(() => {
