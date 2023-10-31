@@ -4,7 +4,7 @@ export interface StudentItem {
     id: string;
     profileimage: string;
     courselist: string[];
-    advisor: string[];
+    advisor: AdvisorItem;
     comment?: any[]
     roles: string []
 }
@@ -42,21 +42,5 @@ export interface RegisterUserItem {
     ownStudent?: []
 }
 
-export interface AdvisorData {
-    id: number;
-    advisorID: string;
-    name: string;
-    surname: string;
-    position: string;
-    image: string[];
-    department: string;
-  }
 
-  export interface StudentConnect {
-    id: number;
-    studentID: string;
-    name: string;
-    surname: string;
-    advisor: AdvisorData;
-  }
   

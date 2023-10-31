@@ -23,5 +23,8 @@ export default {
   },
   addStudent(student: RegisterUserItem): Promise<AxiosResponse<StudentItem>> {
     return apiClient.post("/api/v1/auth/register/student", student)
+  },
+  updateStudent(student: StudentItem): Promise<AxiosResponse<StudentItem>> {
+    return apiClient.put<StudentItem>('/updatestudents', student)
   }
 }

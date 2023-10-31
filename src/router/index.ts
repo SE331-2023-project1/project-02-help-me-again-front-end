@@ -21,14 +21,15 @@ import StudentService from '@/services/StudentService'
 import AdvisorService from '@/services/AdvisorService'
 import { useStudentStore } from '@/stores/student'
 import { useAdvisorStore } from '@/stores/advisor'
-import type { StudentItem } from '@/type'
+import type { AdvisorItem, StudentItem } from '@/type'
 import { commentStudent } from '@/stores/comment'
 import { commentStudentId } from '@/stores/comment_id'
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '@/stores/auth.ts'
 import { useAnnouncementStore } from '@/stores/announcement'
-import {SettingRelation} from '@/views/SettingRelations.vue'
+import SettingRelations from '@/views/SettingRelations.vue'
 import AddPerson from '../views/AddPerson.vue';
+import { useStudentProfileStore } from '@/stores/studentProfile'
   
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -233,8 +234,16 @@ const router = createRouter({
       }
     },{
       path: "/student/:id",
-      name: "Setting-student",
-      component: SettingRelation,
+      name: "setting-student",
+      component: SettingRelations,
+      beforeEnter: (to) => {
+        const id = to.params.id as string
+        return StudentService.getStudentById(id)
+        .then(res => {
+          const stundentProfileStore = useStudentProfileStore()
+          stundentProfileStore.setStudent(res.data as StudentItem)
+        })
+      },
       props: true,
     }
   ]
