@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { type StudentItem } from '@/type'
-import { computed, onMounted, type PropType } from 'vue'
+import {  onMounted, type PropType } from 'vue'
 import { useStudentStore } from '@/stores/student'
-import InputText from '@/components/InputText.vue'
 import * as yup from 'yup'
 import { useField, useForm } from 'vee-validate'
 import { useAuthStore } from '@/stores/auth'
@@ -10,8 +9,6 @@ import { useRouter, RouterLink } from 'vue-router'
 import { useMessageStore } from '@/stores/message'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-import StudentService from '@/services/StudentService'
-// Import the ref and computed functions from Vue
 
 const props = defineProps({
     id: String

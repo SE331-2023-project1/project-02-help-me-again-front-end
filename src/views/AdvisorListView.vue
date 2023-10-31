@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { type AdvisorItem } from '@/type';
 import { computed, ref, type Ref, onMounted } from 'vue';
-import AdvisorService from '@/services/AdvisorrService';
 import AdvisorCard from '@/components/AdvisorCard.vue';
-import NProgress from 'nprogress'
 import { onBeforeRouteUpdate, useRouter, useRoute } from 'vue-router'
-import type { AxiosResponse } from 'axios';
 import { useAdvisorStore } from '@/stores/advisor';
 
 const router = useRouter();
