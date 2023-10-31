@@ -28,8 +28,7 @@ studentStore.getStudentById(props.id!)
     <div v-if="student">
         <div class="text-lg text-center text-black font-sans hover:font-serif flex flex-col p-4">
         </div>
-        <RouterView :student="student" :advisor="advisor"></RouterView>
-        <RouterLink :to="{ name: 'Setting-student', params: { id: student?.id } }">Setting-student</RouterLink>
+        <RouterView></RouterView>
 
     </div>
 </template>

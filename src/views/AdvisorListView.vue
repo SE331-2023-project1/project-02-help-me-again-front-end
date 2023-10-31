@@ -29,7 +29,7 @@ const props = defineProps({
 const fetchAdvisors = () => {
     console.log(store.getAdvisors)
     advisors.value = store.getAdvisorByPage(6, props.page)
-    totalAdvisor.value = store.getAdvisors.length 
+    totalAdvisor.value = store.getAdvisors.length
 };
 
 onBeforeRouteUpdate((to, from, next) => {
@@ -52,16 +52,12 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="my-5">
-        <main class="flex flex-col items-center justify-center">
-
+    <div class="my-5 ">
+        <div class="">
             <div class="-z-10 grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-
                 <AdvisorCard v-for="advisor in advisors" :key="advisor.id" :advisor="advisor"></AdvisorCard>
             </div>
-
             <div class="flex flex-col items-center">
-
                 <div class="pagination flex">
                     <RouterLink :to="{ name: 'advisor-list', query: { page: page - 1, limit: limit } }" rel="prev"
                         v-if="page != 1"
@@ -87,6 +83,6 @@ onMounted(() => {
                     </RouterLink>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
 </template>

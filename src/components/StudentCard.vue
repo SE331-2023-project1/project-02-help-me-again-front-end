@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <RouterLink :to="{firstname: 'student-detail', params: {id: student?.id}}">
+  <RouterLink :to="{name: 'student-detail', params: {id: student?.id} }">
     <!-- {{ console.log(student) }} -->
     <div class="student-class flex flex-col items-center justify-center">
       <div

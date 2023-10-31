@@ -6,6 +6,7 @@ import { useAuthStore } from '@/stores/auth'
 import { useRouter, RouterLink } from 'vue-router'
 import { useMessageStore } from '@/stores/message'
 import { storeToRefs } from 'pinia'
+import ImageUpload from '@/components/ImageUpload.vue'
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -33,6 +34,8 @@ const validationSchema = yup.object({
   password: yup.string()
     .required('The password is required')
     .min(5, 'Password must be at least 5 characters long.'),
+  images: yup.array()
+  .required('Image is required')
 })
 
 const { errors, handleSubmit } = useForm({
@@ -44,6 +47,7 @@ const { errors, handleSubmit } = useForm({
     lastName: '',
     email: '',
     password: '',
+    images: []
   }
 })
 
@@ -117,6 +121,7 @@ const onSubmit = handleSubmit((values) => {
             {{ message }}
           </div>
         </div>
+        <ImageUpload v-model="images" :max="1" />
 
         <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-pri py-2 rounded-md hover:bg-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-200">
           Sign Up

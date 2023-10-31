@@ -10,7 +10,7 @@
           <option value="advisor">Advisor</option>
         </select>
       </div>
-      
+
       <div v-if="selectedPersonType === 'student'">
         <form @submit.prevent="addStudent">
           <div class="grid grid-cols-2 gap-4">
@@ -19,8 +19,7 @@
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentName" type="text" id="studentName" required pattern="[A-Za-z]+"
-                title="Please enter a valid name (only alphabetic characters are allowed)."
-              />
+                title="Please enter a valid name (only alphabetic characters are allowed)." />
             </div>
 
             <div class="flex mb-3">
@@ -28,8 +27,7 @@
               <input
                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
                 v-model="studentLastName" type="text" id="studentLastName" required pattern="[A-Za-z]+"
-                title="Please enter a valid name (only alphabetic characters are allowed)."
-              />
+                title="Please enter a valid name (only alphabetic characters are allowed)." />
             </div>
           </div>
 
@@ -37,94 +35,82 @@
             <label for="student id" class="mr-2">Student ID:</label>
             <input placeholder="642115000"
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="username" >
+              v-model="username">
           </div>
 
           <div class="mb-3">
             <label for="Email" class="mr-2">Email:</label>
             <input placeholder="email"
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="email" >
+              v-model="email">
           </div>
 
           <div class="mb-3">
             <label for="Password" class="mr-2">Password:</label>
             <input placeholder="Password" type="password"
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="password" >
+              v-model="password">
           </div>
 
           <div class="mb-3">
-            <label for="studentProfileImage" class="mr-2">Profile Image URL:</label>
-            <input
-              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="studentProfileImage" type="text" id="studentProfileImage" required pattern="https?://.+"
-              placeholder="Add link of your picture ('http://..' or 'https://..)"
-              title="Must start with 'http://' or 'https://'">
+            <label for="studentProfileImage" class="mr-2">Profile Image:</label>
+            <ImageUpload v-model="images" :max="1" />
           </div>
 
 
           <div class="grid grid-cols-2 gap-4">
             <div class="flex mb-3 mx-auto">
 
-<label for="studentCourseList" class="my-auto ">Course List:</label>
-<select
-  class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-  v-model="studentCourseList" id="studentCourseList" required>
-  <option value disabled>Select Course</option>
+              <label for="studentCourseList" class="my-auto ">Course List:</label>
+              <select
+                class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+                v-model="studentCourseList" id="studentCourseList" required>
+                <option value disabled>Select Course</option>
 
-  <option value="Math">Math</option>
-  <option value="Science">Science</option>
-  <option value="English">English</option>
-  <option value="History">History</option>
-  <option value="Physics">Physics</option>
-  <option value="ComSci">ComSci</option>
-  <option value="Art">Art</option>
-  <option value="Music">Music</option>
-  <option value="Biology">Biology</option>
-  <option value="Chemistry">Chemistry</option>
-  <option value="Spanish">Spanish</option>
-  <option value="Literature">Literature</option>
-  <option value="PolSci">PolSci</option>
-  <option value="Philosophy">Philosophy</option>
-  <option value="Sports">Sports</option>
-  <option value="PE">PE</option>
-  <option value="Drama">Drama</option>
-  <option value="Astronomy">Astronomy</option>
-  <option value="Languages">Languages</option>
-
-
-</select>
+                <option value="Math">Math</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+                <option value="History">History</option>
+                <option value="Physics">Physics</option>
+                <option value="ComSci">ComSci</option>
+                <option value="Art">Art</option>
+                <option value="Music">Music</option>
+                <option value="Biology">Biology</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Literature">Literature</option>
+                <option value="PolSci">PolSci</option>
+                <option value="Philosophy">Philosophy</option>
+                <option value="Sports">Sports</option>
+                <option value="PE">PE</option>
+                <option value="Drama">Drama</option>
+                <option value="Astronomy">Astronomy</option>
+                <option value="Languages">Languages</option>
 
 
+              </select>
 
-</div>
 
 
-<div class="flex mb-3 mx-auto">
-<label for="studentAdvisor" class="my-auto ">Advisor:</label>
-<select
-  class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-  v-model="studentAdvisor" id="studentAdvisor">
-  <option value="" disabled>Select a Advisor</option>
-  <option value="T123">David Smith</option>
-  <option value="T234">Alice Johnson</option>
-  <option value="T345">Emily Williams</option>
-  <option value="T456">Rose Brown</option>
-  <option value="T567">Sarah Miller</option>
-  <option value="T678">John Davis</option>
-  <option value="T789">Olivia Wilson</option>
-  <option value="T890">William Anderson</option>
-  <option value="T901">Sophia Martinez</option>
-  <option value="T012">Daniel Taylor</option>
-
-</select>
-
-</div>
             </div>
 
-          <div id="flashMessage"
-            class="mb-2 animate-pulse text-center text-base font-pri bg-gray-500 font-pri text-white" v-if="message">
+
+            <div class="flex mb-3 mx-auto">
+              <label for="studentAdvisor" class="my-auto ">Advisor:</label>
+              <select
+                class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
+                v-model="studentAdvisor" id="studentAdvisor">
+                <option value="" disabled>Select a Advisor</option>
+                <option v-for="advisorOption in advisorList" :value="advisorOption.id">{{ advisorOption.firstName }}
+                </option>
+
+              </select>
+
+            </div>
+          </div>
+
+          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-pri bg-gray-500 font-pri text-white"
+            v-if="message">
             <h4>{{ message }}</h4>
           </div>
           <FlashMessage />
@@ -158,36 +144,33 @@
 
 
           <div class="mb-3">
-            <label for="advisorProfileImage" class="mr-2">Profile Image URL:</label>
-            <input placeholder="Add link of your picture ('http://..' or 'https://..)"
-              class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="advisorProfileImage" type="text" id="advisorProfileImage" required pattern="https?://.+"
-              title="Must start with 'http://' or 'https://'">
+            <label for="advisorProfileImage" class="mr-2">Profile Image</label>
+            <ImageUpload v-model="images" :max="1" />
           </div>
 
           <div class="mb-3">
             <label for="Username" class="mr-2">Username:</label>
             <input placeholder="Username"
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="username" >
+              v-model="username">
           </div>
 
           <div class="mb-3">
             <label for="Email" class="mr-2">Email:</label>
             <input placeholder="email"
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="email" >
+              v-model="email">
           </div>
 
           <div class="mb-3">
             <label for="Password" class="mr-2">Password:</label>
             <input placeholder="Password" type="password"
               class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5"
-              v-model="password" >
+              v-model="password">
           </div>
 
-          <div id="flashMessage"
-            class="mb-2 animate-pulse text-center text-base font-pri bg-gray-500 font-pri text-white" v-if="message">
+          <div id="flashMessage" class="mb-2 animate-pulse text-center text-base font-pri bg-gray-500 font-pri text-white"
+            v-if="message">
             <h4>{{ message }}</h4>
           </div>
           <FlashMessage />
@@ -210,6 +193,8 @@ import { useMessageStore } from '@/stores/message';
 import { storeToRefs } from 'pinia';
 import AdvisorService from '@/services/AdvisorService';
 import StudentService from '@/services/StudentService';
+import { AdvisorItem } from '@/type';
+import ImageUpload from '@/components/ImageUpload.vue';
 
 const username = ref('')
 const email = ref('')
@@ -232,20 +217,27 @@ const router = useRouter();
 const storeMessage = useMessageStore()
 const { message } = storeToRefs(storeMessage)
 
+const advisorList = ref<AdvisorItem[]>([])
+AdvisorService.getAllAdvisors().then(res => {
+  advisorList.value = res.data as AdvisorItem[]
+})
+
+const images = ref<string[]>([])
+
 const addStudent = () => {
   const store = useStudentStore();
 
   const generateRandomID = () => {
-    const min = 100000; 
-    const max = 999999; 
+    const min = 100000;
+    const max = 999999;
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
   const newStudent = {
     firstName: studentName.value as string,
-    lastName: studentLastName.value as string, 
-    id: generateRandomID().toString(), 
-    images: [studentProfileImage.value as string] ,
+    lastName: studentLastName.value as string,
+    id: generateRandomID().toString(),
+    images: images.value,
     courselist: studentCourseList.value.split(',').map(course => course.trim()),
     advisorID: studentAdvisor.value,
     password: password.value as string,
@@ -255,12 +247,12 @@ const addStudent = () => {
 
 
   StudentService.addStudent(newStudent)
-  .then( res => {
-    console.log(newStudent);
-    console.log(res.data);
-  }).catch(err => {
-    console.log(err);
-  })
+    .then(res => {
+      console.log(newStudent);
+      console.log(res.data);
+    }).catch(err => {
+      console.log(err);
+    })
 
   storeMessage.updateMessage('You are successfully for adding student.')
   setTimeout(() => {
@@ -284,8 +276,8 @@ const addAdvisor = () => {
   const storeAdvisor = useAdvisorStore();
 
   const generateRandomTID = () => {
-    const min = 100; 
-    const max = 999; 
+    const min = 100;
+    const max = 999;
     const randomThreeDigitNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     return `T${randomThreeDigitNumber}`;
   };
@@ -293,26 +285,25 @@ const addAdvisor = () => {
   const newAdvisor = {
     firstName: advisorName.value as string,
     lastName: advisorLastName.value as string,
-    id: generateRandomTID().toString(), 
-    images: [advisorProfileImage.value as string],
+    id: generateRandomTID().toString(),
+    images: images.value,
     roles: [],
     password: password.value as string,
     email: email.value as string,
     username: username.value as string
-
   };
 
-  
+
   AdvisorService.addAdvisor(newAdvisor)
-  .then( res => {
-    console.log(newAdvisor);
-    
-    console.log("Successs");
-    
-    console.log(res.data);
-  }).catch(err => {
-    console.log(err);
-  })
+    .then(res => {
+      console.log(newAdvisor);
+
+      console.log("Successs");
+
+      console.log(res.data);
+    }).catch(err => {
+      console.log(err);
+    })
 
   // storeAdvisor.addAdvisor(newAdvisor);
   // console.log(newAdvisor)

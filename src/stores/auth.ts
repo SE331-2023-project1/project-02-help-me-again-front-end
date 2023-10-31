@@ -19,11 +19,12 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     token: null as string | null,
     userRole: null as string[] | null,
+    username: null as string | null,
     id: null as string | null
   }),
   getters: {
     currentUserName(): string {
-        return ''
+        return this.username || ''
     },
     isAdmin(): boolean {
         return this.userRole?.includes('ROLE_ADMIN') || false
@@ -41,9 +42,11 @@ export const useAuthStore = defineStore('auth', {
             // this.user = response.data.user
             this.userRole = response.data.user_role
             this.id = response.data.id
+            this.username = response.data.username
             localStorage.setItem('access_token', this.token as string)
             localStorage.setItem('user_role', JSON.stringify(this.userRole))
             localStorage.setItem('id', this.id as string)
+            localStorage.setItem('username', this.username as string)
             console.log(response.data.id)
             return response
         })

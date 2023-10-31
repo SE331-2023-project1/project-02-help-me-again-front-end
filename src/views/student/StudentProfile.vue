@@ -59,105 +59,39 @@ let images = ''
 
 onMounted(async () => {
   try {
-    const response = await useStudentStore().getStudentById(authStore.id);
-    student.value = response;
-    // console.log(student.value)
-    const responseAdvisor = await useAdvisorStore().getAdvisor()
-    advisor.value = responseAdvisor;
-    // console.log(advisor.value)
-    // advisorr.value = AdvisorService.getAdvisorById(response.advisor.id)
-    // console.log(authStore.id);
+    const res = await StudentService.getStudentById(authStore.id)
+    student.value = res.data
 
-    // Access student data here
-    if (student.value && advisor.value) {
-        // console.log(responseAdvisor);
-      username.value = response?.username;
-      id.value = response?.id;
-      firstName.value = response?.name;
-      lastName.value = response?.lastNname;
-      department.value = response?.department
-      images = response?.images
+    const responseAdvisor = await AdvisorService.getAdvisorById(student.value.advisor.id)
+    advisor.value = responseAdvisor.data;
+    console.log(student.value, advisor.value);
 
-      advisorId = responseAdvisor?.id
-      advisorName = responseAdvisor?.name
-      advisorLastName = responseAdvisor?.lastName
-      advisorImages = responseAdvisor?.images
-        // console.log(response)
-    }
   } catch (error) {
     console.error('Error fetching student data:', error);
   }
 });
 
-// console.log(student.value)
-
-// const fetchStudentData = async () => {
-//   const response = await useStudentStore().getStudentById(authStore.id);
-//   student.value = response;
-//   console.log(student.value);
-
-//   // Now you can use student.value here or anywhere else in your component.
-// };
-
-// fetchStudentData();
-
-
-
-// StudentService.getStudentById(authStore.id).then((response) => {
-//   student.value = response
-//   console.log(student.value.data)
-// })
-
-// const fetchStudentData = async () => {
-//   try {
-//     const response = await StudentService.getStudentById(authStore.id);
-//     student.value = response;
-//     console.log(student.value)
-//   } catch (error) {
-//     console.error('Error fetching student data:', error);
-//   }
-// };
-
-// const response = StudentService.getStudentById(authStore.id);
-// student.value = response
-// console.log(student.value.data)
-
 const validationSchema = yup.object({
   id: yup.string()
     .required('Enter ID'),
-
-
   firstName: yup
     .string()
     .required('Enter firstName '),
-
-
   lastName: yup
     .string()
     .required('Enter lastName'),
-
-  department: yup
-    .string()
-    .required('Enter Department '),
-
-  // images: yup
-  // .string()
-
-
+  images: yup.array().required("Image is required")
 })
-
-// console.log(student)
 
 const { errors, handleSubmit } = useForm({
   validationSchema,
 
   initialValues: {
-    id: '',
-    firstName: '',
-    lastName: '',
-    department: '',
-    // images: ''
-
+    id: student.value?.id,
+    username: student.value?.username,
+    firstName: student.value?.firstName,
+    lastName: student.value?.lastName,
+    images: student.value?.images
   }
 })
 
@@ -171,9 +105,7 @@ const { value: firstName } = useField<string>('firstName')
 
 const { value: lastName } = useField<string>('lastName')
 
-const { value: department } = useField<string>('department')
-
-// const { value: images } = useField<string>('images')
+// const { value: images } = useField<string[]>('images')
 
 
 
@@ -249,14 +181,14 @@ const saveAndSubmitForm = async () => {
     <div
       class="mt-2 mb-10 font-fig flex flex-col items-center justify-center p-3 w-3/4 sm:w-2/4 h-auto text-xl font-bold text-gray-900 bg-white border border-gray-300 rounded-lg shadow-md">
       <div class="flex flex-col items-center justify-center py-4 space-y-5">
-        <img class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500" :src="images"
-          alt="Profile Picture" />
+        <img class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
+          :src="student?.images[0]" alt="Profile Picture" />
         <!-- <div class="flex justify-center"> -->
-          <!-- Change Profile button -->
-          <!-- <button href="/updatestudents" v-if="isEditing" @click="changePicture"
+        <!-- Change Profile button -->
+        <!-- <button href="/updatestudents" v-if="isEditing" @click="changePicture"
             class="flex mt-2 text-white bg-gray-400 hover:bg-gray-600 focus:ring-4 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 text-center justify-center items-center"> -->
-            <!-- <img src="src/assets/save.png" class="h-[15px] mr-2"> -->
-            <!-- Change Profile Picture
+        <!-- <img src="src/assets/save.png" class="h-[15px] mr-2"> -->
+        <!-- Change Profile Picture
           </button>
         </div> -->
       </div>
@@ -271,7 +203,8 @@ const saveAndSubmitForm = async () => {
             <div class="flex justify-center items-center ">
               <img :src="advisorImages" class="w-10 h-10 object-cover rounded-full mr-2">
               <div class="flex flex-col">
-                <span class="advisorid font-fig text-left text-sm font-semibold">{{ advisorName }} {{ advisorLastName }}</span>
+                <span class="advisorid font-fig text-left text-sm font-semibold">{{ advisorName }} {{ advisorLastName
+                }}</span>
                 <!-- <span class="advisorid font-fig text-left">Advisor ID: {{ student.advisor.id }}</span> -->
               </div>
             </div>
@@ -284,7 +217,19 @@ const saveAndSubmitForm = async () => {
           <div class="items-center mt-4 lg:mb-2 lg:mt-2 w-full text-[#202142]">
 
 
-            <form class="" @submit.prevent="onSubmit">
+            <span class="font-bold text-black my-2"> Student ID: {{ student?.username }}</span><br>
+            <span class=" text-lg text-black"> Name: {{ student?.firstName }} {{ student?.lastName }}</span><br>
+
+            <hr class="font-bold mt-2 py-3" />
+            <div v-if="advisor">
+              <span class="font-bold text-gray-600">Advisor</span><br>
+              <span class=" text-lg text-black"> Name: {{ advisor.firstName }} {{ advisor.lastName }}</span>
+              <img class="object-cover w-40 h-40 p-1 rounded-full ring-2 mx-auto mt-2 ring-indigo-300 dark:ring-indigo-500"
+                :src="advisor.images[0]" alt="Profile Picture" />
+            </div>
+
+
+            <!-- <form class="" @submit.prevent="onSubmit">
 
               <div
                 class="flex flex-col items-center mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
@@ -338,19 +283,13 @@ const saveAndSubmitForm = async () => {
               </div>
 
               <div class="flex justify-center">
-                <!-- <button type="submit" @click="toggleEditMode"
-                        :class="`${buttonColor} hover:${buttonColor} flex focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-white text-sm w-full sm:w-auto px-5 py-2 text-center items-center`">
-                        <img :src="buttonImage" class="h-[15px] mr-2">
-                        {{ buttonLabel }}
-                    </button> -->
-                <!-- Edit button -->
+             
                 <button v-if="!isEditing" @click="enterEditMode"
                   class="flex text-white bg-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 text-center justify-center items-center">
                   <img src="../../assets/edit.png" class="h-[15px] mr-2">
                   Edit
                 </button>
 
-                <!-- edit button when editing mode - disabled -->
                 <button v-if="isEditing" disabled
                   class="flex opacity-50 text-white bg-gray-400 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 text-center items-center justify-center">
                   <img src="../../assets/edit.png" class="h-[15px] mr-2">
@@ -358,7 +297,6 @@ const saveAndSubmitForm = async () => {
                 </button>
               </div>
               <div class="flex justify-center">
-                <!-- Save button -->
                 <button href="/updatestudents" v-if="isEditing" @click="showConfirmation"
                   class="flex mt-2 text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 text-center justify-center items-center">
                   <img src="../../assets/save.png" class="h-[15px] mr-2">
@@ -366,7 +304,7 @@ const saveAndSubmitForm = async () => {
                 </button>
               </div>
 
-            </form>
+            </form> -->
 
           </div>
         </div>

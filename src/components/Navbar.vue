@@ -46,11 +46,14 @@ if (token && userRole && id) {
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul
           class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-500 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white text-black">
+          
+          
           <li v-if="authStore.userRole == 'ROLE_ADMIN' || authStore.userRole == 'ROLE_ADVISOR'"
             class="font-dm mb-2 hover:bg-blue-100 p-3 rounded-md flex items-center">
             <img src="../assets/student.png" class="h-[20px] mr-2">
             <RouterLink to="/students">Students</RouterLink>
           </li>
+
 
           <li v-if="authStore.userRole == 'ROLE_ADMIN'"
             class="font-dm mb-2 hover:bg-blue-100 p-3 rounded-md flex items-center">
@@ -78,13 +81,14 @@ if (token && userRole && id) {
           <li v-if="authStore.userRole == 'ROLE_STUDENT'"
             class="font-dm mb-2 hover:bg-blue-100 p-3 rounded-md flex items-center">
             <img src="../assets/profile.png" class="h-[21px] ml-1 mr-2 items-center">
-            <RouterLink to="/studentprofile">Profile</RouterLink>
+            <RouterLink to="/studentprofile">{{ authStore.currentUserName }}</RouterLink>
           </li>
           <li v-if="authStore.userRole == 'ROLE_ADVISOR'"
             class="font-dm mb-2 hover:bg-blue-100 p-3 rounded-md flex items-center">
             <img src="../assets/profile.png" class="h-[21px] ml-1 mr-2 items-center">
-            <RouterLink to="/advisorprofile">Profile</RouterLink>
+            <RouterLink to="/advisorprofile">{{ authStore.currentUserName }}</RouterLink>
           </li>
+          
           <li v-if="authStore.userRole" class="font-dm mb-2 hover:bg-blue-100 p-3 rounded-md flex items-center">
             <!-- <router-link to="/profile" class="nav-link">
               <font-awesome-icon icon="user"/> {{ authStore.currentUsername }}

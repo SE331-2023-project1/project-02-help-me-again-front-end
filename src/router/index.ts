@@ -27,9 +27,10 @@ import { commentStudentId } from '@/stores/comment_id'
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '@/stores/auth.ts'
 import { useAnnouncementStore } from '@/stores/announcement'
-import SettingRelations from '@/views/SettingRelations.vue'
+import SettingRelations from '@/views/student/SettingRelations.vue'
 import AddPerson from '../views/AddPerson.vue';
 import { useStudentProfileStore } from '@/stores/studentProfile'
+import { useAdvisorProfileStore } from '@/stores/advisorProfile'
   
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -156,21 +157,20 @@ const router = createRouter({
       name: 'student-layout',
       component: StudentLayout,
       props: (route) => ({ id: route.params.id }),
-      beforeEnter: async (to) => {
+      beforeEnter:  (to) => {
         const id: string = to.params.id as string
-        const studentStore = useStudentStore()
-        const advisorStore = useAdvisorStore()
+        const studentStore = useStudentProfileStore()
+        const advisorStore = useAdvisorProfileStore()
         try {
-          // const student = await studentStore.getStudentById(id)
-          // studentStore.setStudent(student)
-          // const advisor = await advisorStore.getAdvisorById(student.advisorID)
-          // advisorStore.setAdvisor(advisor)
+          StudentService.getStudentById(id)
+          .then(res => {
+            studentStore.setStudent(res.data as StudentItem)
+            AdvisorService.getAdvisorById(res.data.advisor.id)
+            .then(response => {
+              advisorStore.setAdvisor(response.data as AdvisorItem)
+            })
+          })
 
-          // studentStore.getStudentById(id)
-          // advisorStore.getAdvisorById(studentStore.getStudent.find(student?.id))
-          // console.log(studentStore)
-
-          useStudentStore().getStudentById(id)
           // console.log(id)
 
         } catch (error: any) {
@@ -207,7 +207,13 @@ const router = createRouter({
           path: '',
           name: 'student-detail',
           component: StudentDetail,
+          props: true
         },
+         {
+          path: 'edit',
+          name: "setting-student",
+          component: SettingRelations,
+        }
       ]
     },
     {
@@ -232,20 +238,21 @@ const router = createRouter({
       beforeEnter: () => {
         useAdvisorStore().fetchAdvisors()
       }
-    },{
-      path: "/student/:id",
-      name: "setting-student",
-      component: SettingRelations,
-      beforeEnter: (to) => {
-        const id = to.params.id as string
-        return StudentService.getStudentById(id)
-        .then(res => {
-          const stundentProfileStore = useStudentProfileStore()
-          stundentProfileStore.setStudent(res.data as StudentItem)
-        })
-      },
-      props: true,
     }
+    // {
+    //   path: "/student/:id",
+    //   name: "setting-student",
+    //   component: SettingRelations,
+    //   beforeEnter: (to) => {
+    //     const id = to.params.id as string
+    //     return StudentService.getStudentById(id)
+    //     .then(res => {
+    //       const stundentProfileStore = useStudentProfileStore()
+    //       stundentProfileStore.setStudent(res.data as StudentItem)
+    //     })
+    //   },
+    //   props: true,
+    // }
   ]
 })
 

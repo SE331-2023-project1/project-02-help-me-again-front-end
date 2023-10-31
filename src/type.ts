@@ -7,6 +7,8 @@ export interface StudentItem {
     advisor: AdvisorItem;
     comment?: any[]
     roles: string []
+    images?: string[];
+    username?: string;
 }
 export interface AdvisorItem {
     [x: string]: any;
@@ -15,7 +17,9 @@ export interface AdvisorItem {
     profileimage: string;
     id: string;
     roles: string []
-    ownStudent: string []
+    ownStudent: string [];
+    username?: string;
+    images?: string[];
 }
 export interface CommentInfo{
     id: string;

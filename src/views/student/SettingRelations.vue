@@ -2,11 +2,14 @@
 import AdvisorService from '@/services/AdvisorService';
 import StudentService from '@/services/StudentService';
 import { useAdvisorStore } from '@/stores/advisor';
+import { useAdvisorProfileStore } from '@/stores/advisorProfile';
 import { useStudentProfileStore } from '@/stores/studentProfile'
 import { AdvisorItem, StudentItem } from '@/type'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const keyword = ref('')
 const selectedAdvisor = ref<AdvisorItem>()
 const advisors = ref<AdvisorItem[]>([])
@@ -26,7 +29,18 @@ const onSubmit = () => {
   // student.value.advisor = selectedAdvisor
   StudentService.updateStudent(student.value).then(res => {
     console.log(res.data);
-    
+    const studentStore = useStudentProfileStore()
+        const advisorStore = useAdvisorProfileStore()
+        try {
+          studentStore.setStudent(res.data as StudentItem)
+            AdvisorService.getAdvisorById(res.data.advisor.id)
+            .then(response => {
+              advisorStore.setAdvisor(response.data as AdvisorItem)
+            })
+          }catch(err){
+            console.log(err);  
+          }
+    router.push({"name": "student-detail" , params: {"id": res.data.id}})
   })
 }
 </script>

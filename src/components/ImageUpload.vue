@@ -1,70 +1,42 @@
+<script setup lang="ts">
+import Uploader from 'vue-media-upload'
+import { ref } from 'vue'
+
+interface Props {
+  modelValue?: string[]
+  max?: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: () => []
+})
+
+const convertStringToMedia = (str: string[]): any => {
+  return str.map((element: string) => {
+    return {
+      name: element
+    }
+  })
+}
+
+const emit = defineEmits(['update:modelValue'])
+const convertMediaToString = (media: any): string[] => {
+  const output: string[] = []
+  media.forEach((element: any) => {
+    output.push(element.name)
+  })
+  return output
+}
+
+const media = ref(convertStringToMedia(props.modelValue))
+const uploadUrl = ref(import.meta.env.VITE_UPLOAD_IMAGE_URL)
+const onChange = (files: any) => {
+  emit('update:modelValue', convertMediaToString(files))
+}
+</script>
+
 <template>
-    <div>
-      <label class="block mb-2 text-sm font-semibold text-indigo-900" for="file_input">Upload an image</label>
-      <div class="flex items-center">
-        <input
-          class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-          ref="fileInput"
-          accept="image/*"
-          @change="handleFileChange"
-          type="file"
-        >
-        <button @click="uploadFile" class="ml-2 bg-indigo-500 text-white py-1 px-2 rounded-md hover:bg-indigo-700 focus:outline-none text-base">Upload</button>
-      </div>
-      <div id="status" class="mt-2 text-sm text-green-700 font-semibold">{{ statusMessage }}</div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        selectedFile: null,
-        statusMessage: "",
-        mediaURLs: [], // Store media URLs in an array
-      };
-    },
-    methods: {
-      handleFileChange(event) {
-        // Check if the selected file is an image before proceeding
-        if (event.target.files[0].type.startsWith('image/')) {
-          this.selectedFile = event.target.files[0];
-          this.statusMessage = "";
-        } else {
-          this.selectedFile = null;
-          this.statusMessage = "Select your existing picture..";
-        }
-      },
-      uploadFile() {
-        if (!this.selectedFile) {
-          this.statusMessage = "Select your existing picture you want.";
-          return;
-        }
-  
-        const formData = new FormData();
-        formData.append("file", this.selectedFile);
-  
-        fetch(import.meta.env.VITE_UPLOAD_URL, {
-          method: "POST",
-          body: formData,
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(`Download error: ${response.status} - ${response.statusText}`);
-            }
-            return response.text(); // Extract the response as text (media URL)
-          })
-          .then((mediaURL) => {
-            this.statusMessage = `The download is complete..`;
-            this.mediaURLs.push(mediaURL); // Add the URL to the mediaURLs array
-            this.$emit("fileUploaded", this.mediaURLs); // Emit the array of URLs
-            console.log(mediaURL)
-          })
-          .catch((error) => {
-            this.statusMessage = error.message;
-          });
-      },
-    },
-  };
-  </script>
-  
+  <Uploader :server="uploadUrl" @change="onChange" :media="media" :max="max" />
+</template>
+
+<style scoped></style>
