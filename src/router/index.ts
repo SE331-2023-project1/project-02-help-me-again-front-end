@@ -27,7 +27,7 @@ import { commentStudentId } from '@/stores/comment_id'
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '@/stores/auth.ts'
 import { useAnnouncementStore } from '@/stores/announcement'
-
+import {SettingRelation} from '@/views/SettingRelations.vue'
 import AddPerson from '../views/AddPerson.vue';
   
 const router = createRouter({
@@ -231,6 +231,11 @@ const router = createRouter({
       beforeEnter: () => {
         useAdvisorStore().fetchAdvisors()
       }
+    },{
+      path: "/student/:id",
+      name: "Setting-student",
+      component: SettingRelation,
+      props: true,
     }
   ]
 })
