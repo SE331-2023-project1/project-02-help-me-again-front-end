@@ -1,39 +1,40 @@
-<script>
-export default {
-    data() {
-        return {
-            photos: [
+<script setup lang="ts">
+import AnnouncementCard from '@/components/AnnouncementCard.vue';
+import { useAnnouncementStore } from '@/stores/announcement';
+import { storeToRefs } from 'pinia';
+import { ref } from 'vue';
+
+  const announcementStore = useAnnouncementStore()
+
+  const announcements = ref(announcementStore.getAnnouncement)
+
+  const photos = [
                 'https://images.unsplash.com/photo-1467810563316-b5476525c0f9?auto=format&fit=crop&q=80&w=2938&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                 'https://images.unsplash.com/photo-1543258103-a62bdc069871?auto=format&fit=crop&q=80&w=2767&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                 'https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&q=80&w=2940&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                // Add more photo URLs here
-            ],
-            selectedPhoto: 0, // Initially select the first photo
-        };
-    },
-    methods: {
-        showPhoto(index) {
-            this.selectedPhoto = index;
-        },
-        closePhotoPopup() {
-            this.selectedPhoto = null;
-        },
-        nextPhoto() {
-            if (this.selectedPhoto < this.photos.length - 1) {
-                this.selectedPhoto++;
-            } else {
-                this.selectedPhoto = 0; // Loop back to the first photo
-            }
-        },
-        prevPhoto() {
-            if (this.selectedPhoto > 0) {
-                this.selectedPhoto--;
-            } else {
-                this.selectedPhoto = this.photos.length - 1; // Loop to the last photo
-            }
-        },
-    },
-};
+            ]
+        const selectedPhoto = ref<Number>(0)
+
+        const showPhoto = (i) => {
+          selectedPhoto.value = i
+        }
+        const closePhotoPopup = () => {
+          selectedPhoto.value = 0
+        }
+        const nextPhoto = () => {
+          if (selectedPhoto.value < photos.length - 1) {
+            selectedPhoto.value++;
+          } else {
+            selectedPhoto.value = 0; // Loop back to the first photo
+          }
+        }
+        const prevPhoto = () => {
+          if (selectedPhoto.value > 0) {
+              selectedPhoto.value--;
+          } else {
+              selectedPhoto.value = photos.length - 1; // Loop to the last photo
+          }
+        }
 
 // import { type AnnouncementItem } from '@/type'
 // import { computed, ref, watchEffect, type Ref , onMounted } from 'vue';
@@ -51,60 +52,10 @@ export default {
 // const totalAnnouncement = ref<number>(10)
 </script>
 
-  
 <template>
-    <main class="p-6 min-h-screen font-pri">
-      <div class="max-w-screen-lg mx-auto">
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <div class="flex items-center mt-4 mb-4">
-            <!-- <img src="src/assets/help.png" alt="Person's Photo" class="w-20 h-20 rounded-full"> -->
-            <div class="mx-auto text-center">
-              <p class="text-2xl font-semibold text-gray-900">Dreygo</p>
-              <p class="text-sm text-gray-600">Date: December 2, 2023</p>
-              <p class="text-sm text-gray-600">Time: 05:12 AM</p>
-            </div>
-          </div>
-      </div>
-
-      <div class="bg-white rounded-lg mt-4 shadow-md p-6">
-        <div class="flex items-center mb-4">
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">December Event</h1>
-          <p class="text-lg text-gray-700">
-            This month we have a big event for our students. Please prepare yourself.
-          </p>
-          </div>
-      </div>
-
-
-      <div class="bg-white rounded-lg mt-4 shadow-md p-6">
-        <div class="flex items-center ">
-            <div class=" relative mx-auto">
-            <img :src="photos[selectedPhoto]" class="object-cover w-full h-60 md:h-96 rounded-lg" alt="Selected Photo" />
-            <div class="absolute top-0 left-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
-              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none" @click="prevPhoto">
-                <svg class="w-6 h-6 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-                </svg>
-                <span class="sr-only">Previous</span>
-              </span>
-            </div>
-            <div class="absolute top-0 right-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
-              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none" @click="nextPhoto">
-                <svg class="w-6 h-6 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                </svg>
-                <span class="sr-only">Next</span>
-              </span>
-            </div>
-          </div>
-        </div>
-          </div>
-      </div>
-
-      
-      
-      
-    </main>
-  </template>
-  
-  
+  <main class="p-6 min-h-screen font-pri">
+    <div class="max-w-screen-lg mx-auto" v-if="announcements">
+      <AnnouncementCard v-for="announcement in announcements" :announcement="announcement" :key="announcement.id"></AnnouncementCard>
+    </div>
+  </main>
+</template>
